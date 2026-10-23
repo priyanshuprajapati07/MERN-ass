@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Multi-page HTML project featuring Home, About, Registration and Contact sections.">
+    <meta name="author" content="Priyanshu Prajapati">
+    <title>Multi-Page Project – Priyanshu Prajapati</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 1rem;
+            line-height: 1.6;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        header,
+        main,
+        footer {
+            background: #fff;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+        }
+
+        header h1 {
+            color: #1f3a93;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        nav a {
+            color: #1f3a93;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page:target,
+        body:not(:has(.page:target)) #home {
+            display: block;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1rem 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #e9eefb;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            max-width: 450px;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            font: inherit;
+        }
+
+        button {
+            padding: 10px 18px;
+            background: #1f3a93;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        button:hover {
+            background: #162b6c;
+        }
+
+        footer {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Priyanshu's Website</h1>
+
+        <nav aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#registration">Registration</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Home Section -->
+        <section id="home" class="page">
+            <h2>Home</h2>
+
+            <p>
+                Welcome to my website! I am Priyanshu Prajapati, a BCA Artificial
+                Intelligence student learning web development.
+            </p>
+
+            <img src="https://picsum.photos/id/1018/600/260" width="600" height="260"
+                alt="Mountain landscape at sunrise">
+
+            <h3>What You Can Do Here</h3>
+
+            <ul>
+                <li>Read <a href="#about">about me</a>.</li>
+                <li><a href="#registration">Register</a> for the workshop.</li>
+                <li>Send me a message through the <a href="#contact">contact section</a>.</li>
+            </ul>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="page">
+            <h2>About Me</h2>
+
+            <p>
+                My name is Priyanshu Prajapati. I am pursuing BCA in Artificial
+                Intelligence at Invertis University and learning front-end development.
+            </p>
+
+            <table>
+                <caption>My Details</caption>
+                <tbody>
+                    <tr>
+                        <th scope="row">Name</th>
+                        <td>Priyanshu Prajapati</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Course</th>
+                        <td>BCA Artificial Intelligence</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">University</th>
+                        <td>Invertis University</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Interests</th>
+                        <td>Web Development, Programming and Technology</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Registration Section -->
+        <section id="registration" class="page">
+            <h2>Workshop Registration</h2>
+
+            <p>Fill out the form below to practise HTML form elements.</p>
+
+            <form action="#" method="post">
+                <p>
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" autocomplete="name" required>
+                </p>
+
+                <p>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" autocomplete="email" required>
+                </p>
+
+                <p>
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" name="dob">
+                </p>
+
+                <p>
+                    <label for="level">Experience Level</label>
+                    <select id="level" name="level">
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                    </select>
+                </p>
+
+                <button type="submit">Register</button>
+            </form>
+
+            <p><small>Note: This demonstration form does not store registration data.</small></p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="page">
+            <h2>Contact Me</h2>
+
+            <form action="mailto:princek57350@gmail.com" method="post" enctype="text/plain">
+                <p>
+                    <label for="contact-name">Your Name</label>
+                    <input type="text" id="contact-name" name="name" required>
+                </p>
+
+                <p>
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </p>
+
+                <button type="submit">Send Message</button>
+            </form>
+
+            <address>
+                Email:
+                <a href="mailto:princek57350@gmail.com">princek57350@gmail.com</a>
+            </address>
+
+            <p><small>The email form requires a configured email application to work.</small></p>
+        </section>
+
+    </main>
+
+    <footer>
+        <hr>
+        <p>
+            <small>
+                &copy; 2026 Priyanshu Prajapati |
+                <a href="#home">Back to Home</a>
+            </small>
+        </p>
+    </footer>
+
+</body>
+
+</html>
