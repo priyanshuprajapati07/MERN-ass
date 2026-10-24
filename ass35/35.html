@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore wooden kids study tables, chairs and furniture.">
+    <title>Wooden Kids Furniture | Landing Page</title>
+
+    <style>
+        :root {
+            --brown: #79543a;
+            --cream: #fff8ef;
+            --dark: #35271f;
+            --accent: #d9a066;
+            --text: #62574f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Navbar */
+        nav {
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding-block: 1rem;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--brown);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        nav ul a:hover {
+            color: var(--brown);
+        }
+
+        /* Hero */
+        .hero {
+            background: var(--cream);
+        }
+
+        .hero .container {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            padding-block: 4rem;
+        }
+
+        .hero__text,
+        .hero__img {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .eyebrow {
+            color: var(--brown);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            font-size: 0.85rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.3rem);
+            color: var(--dark);
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--brown);
+            color: #fff;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #5e402c;
+        }
+
+        .hero__img img {
+            width: 100%;
+            border-radius: 20px;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Features */
+        .features {
+            padding-block: 4rem;
+            text-align: center;
+        }
+
+        .features h2 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-size: 2rem;
+        }
+
+        .section-intro {
+            color: var(--text);
+            margin-bottom: 2rem;
+        }
+
+        .features__list {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            flex: 1 1 260px;
+            background: #fffaf5;
+            border: 1px solid #eadfd3;
+            border-radius: 14px;
+            padding: 1.75rem;
+        }
+
+        .feature span {
+            font-size: 2.5rem;
+        }
+
+        .feature h3 {
+            margin: 0.5rem 0;
+        }
+
+        .feature p {
+            color: var(--text);
+        }
+
+        /* Testimonials */
+        .testimonial {
+            background: var(--dark);
+            color: #fff;
+            padding-block: 3rem;
+        }
+
+        .testimonial h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial__list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .quote {
+            flex: 1 1 300px;
+            max-width: 450px;
+            border-left: 3px solid var(--accent);
+            padding: 0.5rem 1rem;
+        }
+
+        .quote cite {
+            display: block;
+            margin-top: 0.8rem;
+            color: var(--accent);
+            font-style: normal;
+        }
+
+        /* Footer */
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-block: 1.5rem;
+            color: #6d625a;
+        }
+
+        footer a {
+            color: var(--brown);
+        }
+
+        @media (max-width: 768px) {
+            nav .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .hero .container {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-block: 2.5rem;
+            }
+
+            .hero__img {
+                width: 100%;
+            }
+
+            .features,
+            .testimonial {
+                padding-block: 2.5rem;
+            }
+
+            footer .container {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a class="logo" href="https://woodenkidsfurniture.in/">
+                WOODEN KIDS FURNITURE
+            </a>
+
+            <ul>
+                <li><a href="https://woodenkidsfurniture.in/">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#stories">Customer Stories</a></li>
+                <li><a href="https://woodenkidsfurniture.in/">Products</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+
+            <div class="hero__text">
+                <div class="eyebrow">Made for little learners</div>
+
+                <h1>A Beautiful Space for Little Dreams</h1>
+
+                <p>
+                    Discover wooden kids study tables, chairs and furniture
+                    that help create a comfortable and organised learning space
+                    for your child.
+                </p>
+
+                <a class="btn" href="https://woodenkidsfurniture.in/">
+                    Explore Our Collection
+                </a>
+            </div>
+
+            <div class="hero__img">
+                <img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?auto=format&fit=crop&w=1000&q=80"
+                    alt="A cosy children's study space">
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+
+            <h2>Why Choose Wooden Kids Furniture?</h2>
+            <p class="section-intro">
+                Thoughtful furniture for your child's everyday learning.
+            </p>
+
+            <div class="features__list">
+
+                <div class="feature">
+                    <span>🪵</span>
+                    <h3>Wooden Designs</h3>
+                    <p>
+                        Warm wooden furniture designed to complement
+                        your child's room.
+                    </p>
+                </div>
+
+                <div class="feature">
+                    <span>📚</span>
+                    <h3>Study Space</h3>
+                    <p>
+                        Create a dedicated place for reading, drawing
+                        and completing homework.
+                    </p>
+                </div>
+
+                <div class="feature">
+                    <span>🧸</span>
+                    <h3>Kids' Rooms</h3>
+                    <p>
+                        Explore furniture options to help keep
+                        children's spaces organised.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Stories -->
+    <section class="testimonial" id="stories">
+        <div class="container">
+
+            <div style="width: 100%;">
+                <h2>Made for Everyday Moments</h2>
+            </div>
+
+            <div class="testimonial__list">
+
+                <blockquote class="quote">
+                    A dedicated study corner can make reading,
+                    drawing and homework part of a child's daily routine.
+                    <cite>— A little space for learning</cite>
+                </blockquote>
+
+                <blockquote class="quote">
+                    Thoughtfully arranged furniture can help create
+                    a welcoming and organised children's room.
+                    <cite>— Ideas for family spaces</cite>
+                </blockquote>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <span>&copy; 2026 Wooden Kids Furniture</span>
+
+            <span>
+                <a href="https://woodenkidsfurniture.in/">Visit Website</a>
+                · Designed with Flexbox
+            </span>
+        </div>
+    </footer>
+
+</body>
+
+</html>

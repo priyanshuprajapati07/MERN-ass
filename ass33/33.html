@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Assignment 33: Responsive product listing using CSS Flexbox and flex-wrap.">
+    <title>Assignment 33 - Wooden Kids Furniture</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, Arial, sans-serif;
+            background: #f8f5ef;
+            color: #33271e;
+        }
+
+        header {
+            background: #563b27;
+            color: #fff;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        header p {
+            margin: .25rem 0 0;
+            color: #ead9c5;
+            font-size: .9rem;
+        }
+
+        .header-link {
+            color: #563b27;
+            background: #f2d2a9;
+            text-decoration: none;
+            padding: .65rem 1rem;
+            border-radius: 7px;
+            font-weight: 700;
+        }
+
+        .intro {
+            text-align: center;
+            padding: 2.5rem 1rem 1rem;
+        }
+
+        .intro h2 {
+            margin: 0 0 .5rem;
+            color: #563b27;
+            font-size: clamp(1.7rem, 4vw, 2.5rem);
+        }
+
+        .intro p {
+            max-width: 650px;
+            margin: 0 auto;
+            color: #75675a;
+            line-height: 1.7;
+        }
+
+        /* Responsive product listing */
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            gap: 1.25rem;
+            padding: 2rem 1.5rem;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        .product {
+            flex: 1 1 240px;
+            max-width: 280px;
+            min-width: 0;
+            background: #fff;
+            border: 1px solid #e8dfd3;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 12px rgba(70, 45, 25, .08);
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 24px rgba(70, 45, 25, .15);
+        }
+
+        .product img {
+            width: 100%;
+            height: 185px;
+            object-fit: cover;
+            display: block;
+            background: #eee5d9;
+        }
+
+        .product__body {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .product__body h3 {
+            font-size: 1.05rem;
+            color: #563b27;
+            margin: 0 0 .5rem;
+        }
+
+        .product__body p {
+            margin: 0 0 1rem;
+            color: #75675a;
+            font-size: .9rem;
+            line-height: 1.6;
+        }
+
+        .product__footer {
+            margin-top: auto;
+            padding-top: .75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: .5rem;
+            flex-wrap: wrap;
+        }
+
+        .price {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #563b27;
+        }
+
+        button {
+            background: #795536;
+            color: #fff;
+            border: 0;
+            padding: .6rem .9rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font: inherit;
+            font-size: .9rem;
+            font-weight: 700;
+        }
+
+        button:hover {
+            background: #563b27;
+        }
+
+        button:focus-visible,
+        a:focus-visible {
+            outline: 3px solid #d6a66e;
+            outline-offset: 3px;
+        }
+
+        .cart-status {
+            max-width: 1200px;
+            margin: 0 auto 1.5rem;
+            padding: 0 1.5rem;
+            color: #563b27;
+            font-weight: 700;
+        }
+
+        .cart-status p {
+            margin: 0;
+        }
+
+        footer {
+            background: #563b27;
+            color: #fff;
+            text-align: center;
+            padding: 1.5rem;
+            line-height: 1.8;
+        }
+
+        footer a {
+            color: #f2d2a9;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 1rem;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .products {
+                padding: 1.25rem 1rem;
+                gap: 1rem;
+            }
+
+            .product {
+                flex: 1 1 100%;
+                max-width: 400px;
+            }
+
+            .product img {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <h1>Wooden Kids Furniture</h1>
+            <p>Comfortable furniture for little learners</p>
+        </div>
+
+        <a class="header-link" href="https://woodenkidsfurniture.in/" target="_blank" rel="noopener noreferrer">
+            Visit Website
+        </a>
+    </header>
+
+    <section class="intro">
+        <h2>Kids Furniture Collection</h2>
+        <p>
+            Explore wooden study tables, chairs and storage solutions
+            designed to make children's spaces comfortable and organized.
+        </p>
+    </section>
+
+    <main class="products">
+
+        <article class="product">
+            <img src="https://picsum.photos/seed/kidsstudytable/500/350" alt="Wooden kids study table placeholder image"
+                loading="lazy">
+
+            <div class="product__body">
+                <h3>Kids Wooden Study Table</h3>
+                <p>
+                    A practical study table for drawing, reading, homework
+                    and other learning activities.
+                </p>
+
+                <div class="product__footer">
+                    <span class="price">₹2,999</span>
+                    <button type="button" class="add-to-cart" data-product="Kids Wooden Study Table" data-price="2999">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </article>
+
+        <article class="product">
+            <img src="https://picsum.photos/seed/woodenkidschair/500/350" alt="Wooden kids chair placeholder image"
+                loading="lazy">
+
+            <div class="product__body">
+                <h3>Kids Wooden Chair</h3>
+                <p>
+                    A compact chair designed for children's study and
+                    activity spaces.
+                </p>
+
+                <div class="product__footer">
+                    <span class="price">₹1,499</span>
+                    <button type="button" class="add-to-cart" data-product="Kids Wooden Chair" data-price="1499">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </article>
+
+        <article class="product">
+            <img src="https://picsum.photos/seed/kidsdeskset/500/350" alt="Kids wooden desk set placeholder image"
+                loading="lazy">
+
+            <div class="product__body">
+                <h3>Study Table and Chair Set</h3>
+                <p>
+                    A matching table and chair combination for a dedicated
+                    kids' study corner.
+                </p>
+
+                <div class="product__footer">
+                    <span class="price">₹3,999</span>
+                    <button type="button" class="add-to-cart" data-product="Study Table and Chair Set"
+                        data-price="3999">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </article>
+
+        <article class="product">
+            <img src="https://picsum.photos/seed/kidstoystorage/500/350" alt="Wooden storage unit placeholder image"
+                loading="lazy">
+
+            <div class="product__body">
+                <h3>Kids Storage Unit</h3>
+                <p>
+                    A storage solution to help keep toys, books and
+                    everyday essentials organized.
+                </p>
+
+                <div class="product__footer">
+                    <span class="price">₹2,499</span>
+                    <button type="button" class="add-to-cart" data-product="Kids Storage Unit" data-price="2499">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </article>
+
+        <article class="product">
+            <img src="https://picsum.photos/seed/kidsbookshelf/500/350" alt="Wooden bookshelf placeholder image"
+                loading="lazy">
+
+            <div class="product__body">
+                <h3>Kids Bookshelf</h3>
+                <p>
+                    Keep children's favourite storybooks and learning
+                    materials together in one place.
+                </p>
+
+                <div class="product__footer">
+                    <span class="price">₹2,199</span>
+                    <button type="button" class="add-to-cart" data-product="Kids Bookshelf" data-price="2199">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <div class="cart-status" aria-live="polite">
+        <p id="cartMessage">Cart items: 0</p>
+    </div>
+
+    <footer>
+        <p>Assignment 33 | Created by Priyanshu Prajapati</p>
+        <p>
+            <a href="https://woodenkidsfurniture.in/" target="_blank" rel="noopener noreferrer">
+                Wooden Kids Furniture Website
+            </a>
+        </p>
+    </footer>
+
+    <script>
+        const cartMessage = document.getElementById("cartMessage");
+        const cartButtons = document.querySelectorAll(".add-to-cart");
+
+        let cartCount = 0;
+        let cartTotal = 0;
+
+        cartButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                const productName = button.dataset.product;
+                const productPrice = Number(button.dataset.price);
+
+                cartCount++;
+                cartTotal += productPrice;
+
+                cartMessage.textContent =
+                    "Cart items: " + cartCount +
+                    " | Demo total: ₹" + cartTotal.toLocaleString("en-IN");
+
+                button.textContent = "Added ✓";
+
+                setTimeout(function () {
+                    button.textContent = "Add to Cart";
+                }, 900);
+
+                console.log(productName + " added to demo cart.");
+            });
+        });
+    </script>
+
+</body>
+
+</html>
