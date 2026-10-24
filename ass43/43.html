@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wooden Kids Furniture - a responsive website project by Priyanshu Prajapati.">
+    <title>Wooden Kids Furniture | Priyanshu Prajapati</title>
+
+    <style>
+        :root {
+            --brown: #79543a;
+            --dark: #35271f;
+            --cream: #fff8ef;
+            --light: #f1e4d6;
+            --white: #fff;
+            --border: #e5d9cc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            color: var(--dark);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .page {
+            display: grid;
+            grid-template-rows: auto auto auto auto auto;
+        }
+
+        .wrap {
+            width: min(1100px, 92%);
+            margin-inline: auto;
+        }
+
+        /* Flexbox: navigation */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding-block: 1rem;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--brown);
+        }
+
+        .nav ul {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav ul a:not(.btn):hover {
+            color: var(--brown);
+        }
+
+        .btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 44px;
+            padding: 0.75rem 1.3rem;
+            border-radius: 8px;
+            font-weight: 700;
+            background: var(--brown);
+            color: var(--white);
+            border: 2px solid var(--brown);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--dark);
+            border-color: var(--dark);
+        }
+
+        .btn--ghost {
+            background: transparent;
+            color: var(--brown);
+        }
+
+        .btn--ghost:hover {
+            color: var(--white);
+        }
+
+        /* Grid: hero section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 3rem;
+            padding-block: 4rem;
+        }
+
+        .eyebrow {
+            color: var(--brown);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            margin-bottom: 1.5rem;
+            color: #65574c;
+        }
+
+        .btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .hero img {
+            width: 100%;
+            min-height: 280px;
+            max-height: 420px;
+            object-fit: cover;
+            border-radius: 18px;
+        }
+
+        /* Grid: product highlights */
+        .features {
+            background: var(--cream);
+            padding-block: 4rem;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-heading p {
+            margin-top: 0.5rem;
+            color: #65574c;
+        }
+
+        .features__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Flexbox: icon and text inside cards */
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: var(--white);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+        .feature-icon {
+            font-size: 1.8rem;
+            line-height: 1.4;
+        }
+
+        .feature h3 {
+            margin-bottom: 0.4rem;
+        }
+
+        .feature p {
+            color: #65574c;
+        }
+
+        /* Grid: product cards */
+        .products {
+            padding-block: 4rem;
+        }
+
+        .products__grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--white);
+        }
+
+        .product img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+            background: var(--light);
+        }
+
+        .product p {
+            color: #65574c;
+        }
+
+        .product .btn {
+            margin-top: auto;
+        }
+
+        .product h3 {
+            font-size: 1.15rem;
+        }
+
+        .about {
+            padding: 2rem;
+            margin-bottom: 4rem;
+            background: var(--light);
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .about h2 {
+            margin-bottom: 0.75rem;
+        }
+
+        .about p {
+            max-width: 700px;
+            margin: 0 auto 1rem;
+        }
+
+        /* Flexbox: footer */
+        footer {
+            background: var(--dark);
+            color: #f4e9df;
+        }
+
+        footer .wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-block: 1.5rem;
+        }
+
+        footer a {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 820px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .btns {
+                justify-content: center;
+            }
+
+            .hero img {
+                max-height: 350px;
+            }
+
+            .products__grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .nav {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .nav ul {
+                justify-content: center;
+                gap: 0.75rem;
+            }
+
+            .hero {
+                padding-block: 2.5rem;
+            }
+
+            .products__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features,
+            .products {
+                padding-block: 2.5rem;
+            }
+
+            .about {
+                padding: 1.25rem;
+                margin-bottom: 2.5rem;
+            }
+
+            footer .wrap {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <nav aria-label="Main navigation">
+            <div class="wrap nav">
+                <a class="logo" href="#home">WOODEN KIDS FURNITURE</a>
+
+                <ul>
+                    <li><a href="#features">Why Us</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li>
+                        <a class="btn" href="https://woodenkidsfurniture.in/" target="_blank" rel="noopener noreferrer">
+                            Visit Store
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <header class="wrap hero" id="home">
+            <div>
+                <p class="eyebrow">Made for little learners</p>
+                <h1>A beautiful space for your child's big ideas.</h1>
+                <p>
+                    Explore wooden kids' furniture designed for study time,
+                    creativity and everyday learning.
+                </p>
+
+                <div class="btns">
+                    <a class="btn" href="#products">Explore Products</a>
+                    <a class="btn btn--ghost" href="#about">Learn More</a>
+                </div>
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80"
+                alt="Warm and comfortable home interior">
+        </header>
+
+        <section class="features" id="features">
+            <div class="wrap">
+                <div class="section-heading">
+                    <h2>Designed for Everyday Learning</h2>
+                    <p>Thoughtful furniture for children's spaces.</p>
+                </div>
+
+                <div class="features__grid">
+                    <article class="feature">
+                        <span class="feature-icon" aria-hidden="true">🪵</span>
+                        <div>
+                            <h3>Wooden Style</h3>
+                            <p>A warm, natural look that fits comfortably into a child's room.</p>
+                        </div>
+                    </article>
+
+                    <article class="feature">
+                        <span class="feature-icon" aria-hidden="true">📚</span>
+                        <div>
+                            <h3>Study Spaces</h3>
+                            <p>Furniture ideas for reading, drawing, studying and creating.</p>
+                        </div>
+                    </article>
+
+                    <article class="feature">
+                        <span class="feature-icon" aria-hidden="true">🏡</span>
+                        <div>
+                            <h3>Home Friendly</h3>
+                            <p>Explore furniture styles for bedrooms, study corners and play areas.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrap products" id="products">
+            <div class="section-heading">
+                <h2>Explore Furniture Ideas</h2>
+                <p>Visit the store for current products, details and prices.</p>
+            </div>
+
+            <div class="products__grid">
+                <article class="product">
+                    <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=80"
+                        alt="Wooden chair in a bright interior" loading="lazy">
+                    <h3>Kids' Study Chair</h3>
+                    <p>A chair style to inspire a comfortable study corner.</p>
+                    <a class="btn btn--ghost" href="https://woodenkidsfurniture.in/" target="_blank"
+                        rel="noopener noreferrer">
+                        View at Store
+                    </a>
+                </article>
+
+                <article class="product">
+                    <img src="https://images.unsplash.com/photo-1499933374294-4584851497cc?auto=format&fit=crop&w=800&q=80"
+                        alt="Wooden desk in a home workspace" loading="lazy">
+                    <h3>Kids' Study Table</h3>
+                    <p>A dedicated space for books, homework and creative activities.</p>
+                    <a class="btn btn--ghost" href="https://woodenkidsfurniture.in/" target="_blank"
+                        rel="noopener noreferrer">
+                        View at Store
+                    </a>
+                </article>
+
+                <article class="product">
+                    <img src="https://images.unsplash.com/photo-1598300056393-4aac492f4344?auto=format&fit=crop&w=800&q=80"
+                        alt="Furniture in a simple, warm interior" loading="lazy">
+                    <h3>Storage & Organization</h3>
+                    <p>Furniture inspiration for keeping a child's space organized.</p>
+                    <a class="btn btn--ghost" href="https://woodenkidsfurniture.in/" target="_blank"
+                        rel="noopener noreferrer">
+                        View at Store
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <section class="wrap about" id="about">
+            <h2>About This Project</h2>
+            <p>
+                This responsive landing page is a frontend practice project by
+                Priyanshu Prajapati, a BCA Artificial Intelligence student at
+                Invertis University. It combines CSS Grid for page and card
+                layouts with Flexbox for navigation and component alignment.
+            </p>
+            <a class="btn" href="https://woodenkidsfurniture.in/" target="_blank" rel="noopener noreferrer">
+                Visit Wooden Kids Furniture
+            </a>
+        </section>
+
+        <footer>
+            <div class="wrap">
+                <span>&copy; 2026 Priyanshu Prajapati</span>
+                <span>
+                    Built with HTML, CSS Grid and Flexbox ·
+                    <a href="https://github.com/priyanshuprajapati07" target="_blank" rel="noopener noreferrer">
+                        GitHub
+                    </a>
+                </span>
+            </div>
+        </footer>
+
+    </div>
+</body>
+
+</html>
