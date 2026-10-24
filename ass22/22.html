@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An interactive demonstration of CSS selector types by Priyanshu Prajapati.">
+    <meta name="author" content="Priyanshu Prajapati">
+    <title>CSS Selector Types | Priyanshu Prajapati</title>
+
+    <style>
+        /* 1. Universal Selector */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 2. Element Selector */
+        body {
+            font-family: system-ui, sans-serif;
+            background: #eef2f7;
+            color: #222;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        h1 {
+            margin-bottom: 0.5rem;
+            color: #1d3557;
+        }
+
+        h2,
+        h3 {
+            color: #457b9d;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 0.75rem;
+        }
+
+        header {
+            max-width: 850px;
+            margin: 0 auto 1.5rem;
+            text-align: center;
+        }
+
+        main {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        /* 3. Class Selector */
+        .card {
+            background: #fff;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .highlight {
+            background: #ffe066;
+            padding: 0 0.25rem;
+            border-radius: 3px;
+        }
+
+        /* 4. ID Selector */
+        #special {
+            border-left: 6px solid #e63946;
+        }
+
+        /* 5. Grouping Selector */
+        h2,
+        h3 {
+            color: #457b9d;
+        }
+
+        /* 6. Descendant Selector */
+        .card a {
+            color: #e63946;
+            font-weight: bold;
+        }
+
+        /* 7. Child Selector */
+        ul>li {
+            margin-left: 1.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        /* 8. Adjacent Sibling Selector */
+        h2+p {
+            font-weight: bold;
+        }
+
+        /* 9. Attribute Selector */
+        a[target="_blank"]::after {
+            content: " ↗";
+        }
+
+        input[type="text"] {
+            width: 100%;
+            max-width: 350px;
+            padding: 0.65rem;
+            border: 1px solid #999;
+            border-radius: 5px;
+            font: inherit;
+        }
+
+        /* 10. Pseudo-classes */
+        a:hover {
+            text-decoration: none;
+            background: #ffe066;
+        }
+
+        input:focus {
+            outline: 3px solid #a8dadc;
+        }
+
+        li:nth-child(odd) {
+            color: #1d3557;
+        }
+
+        /* 11. Pseudo-element */
+        .example-text::first-line {
+            letter-spacing: 0.5px;
+        }
+
+        footer {
+            max-width: 850px;
+            margin: 1.5rem auto 0;
+            text-align: center;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>CSS Selector Playground</h1>
+        <p>Learn how different CSS selectors target and style HTML elements.</p>
+        <p><strong>Created by:</strong> Priyanshu Prajapati</p>
+    </header>
+
+    <main>
+
+        <section class="card">
+            <h2>Class and Element Selectors</h2>
+
+            <p class="example-text">
+                This paragraph demonstrates the adjacent sibling selector.
+                Its text also demonstrates the first-line pseudo-element.
+            </p>
+
+            <p>
+                This is a normal paragraph styled using the element selector.
+                The <span class="highlight">highlighted text</span> uses a class selector.
+            </p>
+        </section>
+
+        <section class="card" id="special">
+            <h2>ID Selector</h2>
+
+            <p>
+                This card uses the unique ID <code>#special</code>,
+                which gives it a red left border.
+            </p>
+        </section>
+
+        <section class="card">
+            <h2>Descendant, Child and Pseudo-class Selectors</h2>
+
+            <ul>
+                <li>Odd item styled using <code>:nth-child(odd)</code>.</li>
+                <li>Even item with the default list styling.</li>
+                <li>
+                    Odd item with
+                    <a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer">
+                        MDN Web Docs
+                    </a>
+                    demonstrating an attribute selector.
+                </li>
+            </ul>
+
+            <p>Click the input below to see the focus effect:</p>
+
+            <input type="text" placeholder="Click here to test :focus">
+        </section>
+
+        <section class="card">
+            <h2>CSS Selectors Summary</h2>
+
+            <ul>
+                <li><code>*</code> — Universal selector</li>
+                <li><code>p</code> — Element selector</li>
+                <li><code>.card</code> — Class selector</li>
+                <li><code>#special</code> — ID selector</li>
+                <li><code>h2, h3</code> — Grouping selector</li>
+                <li><code>.card a</code> — Descendant selector</li>
+                <li><code>ul &gt; li</code> — Child selector</li>
+                <li><code>h2 + p</code> — Adjacent sibling selector</li>
+                <li><code>input[type="text"]</code> — Attribute selector</li>
+                <li><code>a:hover</code> — Pseudo-class</li>
+                <li><code>p::first-line</code> — Pseudo-element</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <p><small>&copy; 2026 Priyanshu Prajapati | Assignment 22 - CSS Selectors</small></p>
+    </footer>
+
+</body>
+
+</html>
