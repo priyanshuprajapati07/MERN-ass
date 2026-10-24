@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Assignment 28: Fixing CSS overflow problems with responsive layouts.">
+    <title>Assignment 28 - Fixing Overflow Problems</title>
+
+    <style>
+        /* Global box-sizing fix */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #f1f5f9;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        .wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: #1d3557;
+            color: white;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+        }
+
+        header p {
+            margin: 0;
+            color: #e2e8f0;
+        }
+
+        .column {
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #dbe3ee;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background: white;
+            box-shadow: 0 3px 10px rgba(15, 23, 42, 0.05);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #1d3557;
+            font-size: 1.25rem;
+        }
+
+        /* Fix 1: Images stay within their container */
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Fix 2: Long URLs and words wrap */
+        .long-text {
+            overflow-wrap: anywhere;
+        }
+
+        /* Fix 3: Wide tables scroll horizontally */
+        .table-scroll {
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 650px;
+        }
+
+        th,
+        td {
+            border: 1px solid #cbd5e1;
+            padding: 10px;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        th {
+            background: #e2e8f0;
+        }
+
+        /* Fix 4: Content scrolls inside a fixed-height box */
+        .fixed-box {
+            height: 100px;
+            overflow-y: auto;
+            border: 1px solid #cbd5e1;
+            padding: 12px;
+            border-radius: 6px;
+            background: #f8fafc;
+        }
+
+        /* Fix 5: Long code lines scroll horizontally */
+        pre {
+            max-width: 100%;
+            overflow-x: auto;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 16px;
+            border-radius: 8px;
+            white-space: pre;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        footer {
+            text-align: center;
+            color: #64748b;
+            padding: 16px 0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+            }
+
+            header,
+            .column {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="wrapper">
+        <header>
+            <h1>Assignment 28: Fixing Overflow</h1>
+            <p>Responsive CSS layout and overflow handling</p>
+            <p>Created by Priyanshu Prajapati | BCA Artificial Intelligence</p>
+        </header>
+
+        <section class="column">
+            <h2>1. Responsive Image</h2>
+            <p>The image adjusts automatically to fit the available width.</p>
+            <img src="https://picsum.photos/id/1011/1000/400" alt="A peaceful lake surrounded by mountains">
+        </section>
+
+        <section class="column long-text">
+            <h2>2. Long Unbroken Text</h2>
+            <p>This long URL should wrap instead of stretching the page:</p>
+            <p>
+                https://www.example.com/this/is/a/very/long/url/that/would/normally/stretch/the/layout/sideways/forever/and/ever
+            </p>
+        </section>
+
+        <section class="column">
+            <h2>3. Wide Table</h2>
+            <p>On smaller screens, scroll horizontally inside the table area.</p>
+
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>City</th>
+                            <th>Course</th>
+                            <th>Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Priyanshu Prajapati</td>
+                            <td>princek57350@gmail.com</td>
+                            <td>New Delhi</td>
+                            <td>BCA AI</td>
+                            <td>2028</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="column">
+            <h2>4. Fixed-Height Box</h2>
+            <p>Extra content scrolls inside this box instead of overflowing.</p>
+
+            <div class="fixed-box">
+                CSS overflow controls what happens when content is larger than
+                its container. The auto value displays a scrollbar when necessary.
+                This keeps the page layout organized and prevents content from
+                spilling outside the fixed-height area. Responsive layouts should
+                handle extra content carefully on both desktop and mobile devices.
+            </div>
+        </section>
+
+        <section class="column">
+            <h2>5. Code Block</h2>
+            <p>Long code lines can be scrolled horizontally.</p>
+
+            <pre><code>const message = "This line is intentionally very long so that it can be scrolled horizontally without breaking the page layout.";</code></pre>
+        </section>
+
+        <section class="column">
+            <h2>What I Learned</h2>
+            <ul>
+                <li><code>box-sizing: border-box</code> keeps element sizing predictable.</li>
+                <li><code>max-width: 100%</code> prevents images from exceeding their container.</li>
+                <li><code>overflow-wrap: anywhere</code> handles long URLs and words.</li>
+                <li><code>overflow-x: auto</code> allows horizontal scrolling for wide content.</li>
+                <li><code>overflow-y: auto</code> keeps extra content inside a fixed-height box.</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>Assignment 28 | Priyanshu Prajapati | Invertis University</p>
+        </footer>
+    </main>
+</body>
+
+</html>

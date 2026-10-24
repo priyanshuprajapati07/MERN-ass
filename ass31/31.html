@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Assignment 31: Responsive Flexbox navigation menu by Priyanshu Prajapati.">
+  <title>Assignment 31 - Responsive Flexbox Menu</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      color: #1e293b;
+      background: #f1f5f9;
+      line-height: 1.6;
+    }
+
+    /* Navigation bar */
+    .menu {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: #1d3557;
+      padding: 0 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .menu__brand {
+      color: #f4a261;
+      font-weight: 800;
+      font-size: 1.4rem;
+      padding: 1rem 0;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .menu__list {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+
+    .menu__list a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      padding: 1rem 1.1rem;
+      transition: background .2s;
+    }
+
+    .menu__list a:hover,
+    .menu__list a.active {
+      background: #457b9d;
+    }
+
+    .menu__cta {
+      background: #f4a261;
+      color: #1d3557;
+      padding: .65rem 1.1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: background .2s;
+    }
+
+    .menu__cta:hover {
+      background: #ffbd85;
+    }
+
+    /* Main content */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    .hero {
+      padding: 3rem 2rem;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, .07);
+      text-align: center;
+    }
+
+    .hero h1 {
+      color: #1d3557;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto 1.5rem;
+      color: #64748b;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .75rem;
+      margin-top: 1.5rem;
+    }
+
+    .skills span {
+      background: #e0e7ff;
+      color: #3730a3;
+      padding: .5rem .9rem;
+      border-radius: 999px;
+      font-size: .9rem;
+      font-weight: 600;
+    }
+
+    .section {
+      margin-top: 2rem;
+      padding: 2rem;
+      background: white;
+      border-radius: 12px;
+    }
+
+    .section h2 {
+      color: #1d3557;
+      margin-bottom: .75rem;
+    }
+
+    .section a {
+      color: #2563eb;
+      font-weight: 600;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      background: #1d3557;
+      color: #e2e8f0;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    /* Responsive menu for mobile screens */
+    @media (max-width: 640px) {
+      .menu {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0 .75rem 1rem;
+      }
+
+      .menu__brand {
+        text-align: center;
+        padding-bottom: .5rem;
+      }
+
+      .menu__list {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .menu__list a {
+        padding: .75rem;
+        border-radius: 5px;
+      }
+
+      .menu__cta {
+        display: block;
+        text-align: center;
+        margin-top: .75rem;
+      }
+
+      main {
+        padding: 1.5rem 1rem;
+      }
+
+      .hero {
+        padding: 2rem 1rem;
+      }
+
+      .section {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="menu" aria-label="Main navigation">
+    <a class="menu__brand" href="#home">Priyanshu.dev</a>
+
+    <ul class="menu__list">
+      <li><a class="active" href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <a
+      class="menu__cta"
+      href="https://github.com/priyanshuprajapati07"
+      target="_blank"
+      rel="noopener noreferrer">
+      My GitHub
+    </a>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <h1>Welcome to My Portfolio</h1>
+
+      <p>
+        Hi, I'm Priyanshu Prajapati, a BCA Artificial Intelligence student
+        at Invertis University. I'm learning web development and building
+        projects to improve my coding skills.
+      </p>
+
+      <a
+        class="menu__cta"
+        href="https://linkedin.com/in/priyanshu-prajapati-p77"
+        target="_blank"
+        rel="noopener noreferrer">
+        Connect on LinkedIn
+      </a>
+
+      <div class="skills" id="skills">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>React Basics</span>
+        <span>Java</span>
+        <span>Python</span>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <h2>About Me</h2>
+      <p>
+        I'm pursuing BCA in Artificial Intelligence. I enjoy creating
+        responsive websites and learning frontend development through
+        practical assignments and personal projects.
+      </p>
+    </section>
+
+    <section class="section" id="contact">
+      <h2>Contact & Projects</h2>
+
+      <p>
+        GitHub:
+        <a href="https://github.com/priyanshuprajapati07"
+           target="_blank"
+           rel="noopener noreferrer">
+          github.com/priyanshuprajapati07
+        </a>
+      </p>
+
+      <p>
+        LinkedIn:
+        <a href="https://linkedin.com/in/priyanshu-prajapati-p77"
+           target="_blank"
+           rel="noopener noreferrer">
+          View my LinkedIn
+        </a>
+      </p>
+
+      <p>
+        Project:
+        <a href="https://woodenkidsfurniture.in/"
+           target="_blank"
+           rel="noopener noreferrer">
+          Wooden Kids Furniture
+        </a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Assignment 31 | Priyanshu Prajapati | Invertis University</p>
+  </footer>
+
+</body>
+</html>

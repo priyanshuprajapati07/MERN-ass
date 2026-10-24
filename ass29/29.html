@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Assignment 29: Responsive hero section demonstrating CSS position and z-index.">
+    <title>Assignment 29 - Hero Section</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: system-ui, Arial, sans-serif;
+            color: #1e293b;
+        }
+
+        /* Hero container */
+        .hero {
+            position: relative;
+            min-height: 600px;
+            height: 100vh;
+            overflow: hidden;
+            color: white;
+            background: #1d3557;
+        }
+
+        /* Layer 0: Background image */
+        .hero__bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        /* Layer 1: Dark overlay */
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg,
+                    rgba(10, 25, 47, 0.88),
+                    rgba(29, 53, 87, 0.45));
+            z-index: 1;
+        }
+
+        /* Layer 3: Navigation */
+        .nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 3;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 24px 6%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #f4a261;
+            text-decoration: none;
+        }
+
+        .nav__links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .nav__links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav__links a:hover {
+            color: #f4a261;
+        }
+
+        /* Layer 2: Hero content */
+        .hero__content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+            width: min(90%, 760px);
+        }
+
+        .eyebrow {
+            color: #f4a261;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .hero__content h1 {
+            font-size: clamp(2.3rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero__content p {
+            max-width: 600px;
+            margin: 0 auto 28px;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            line-height: 1.7;
+            color: #e2e8f0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #f4a261;
+            color: #172033;
+            padding: 14px 28px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn:hover {
+            background: #ffbd85;
+            transform: translateY(-3px);
+        }
+
+        /* Layer 3: Floating badge */
+        .badge {
+            position: absolute;
+            right: 6%;
+            bottom: 28px;
+            z-index: 3;
+            background: white;
+            color: #1d3557;
+            padding: 12px 18px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .badge strong {
+            display: block;
+            font-size: 1.4rem;
+        }
+
+        /* Layer 10: Fixed back-to-top button */
+        .fab {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            display: grid;
+            place-items: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #f4a261;
+            color: #172033;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .next {
+            padding: 80px 20px;
+            text-align: center;
+            background: #f8fafc;
+        }
+
+        .next h2 {
+            color: #1d3557;
+            font-size: 2rem;
+            margin-bottom: 14px;
+        }
+
+        .next p {
+            max-width: 650px;
+            margin: 0 auto 24px;
+            line-height: 1.7;
+        }
+
+        .profile-link {
+            color: #1d3557;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .profile-link:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            padding: 24px;
+            text-align: center;
+            background: #172033;
+            color: #e2e8f0;
+        }
+
+        @media (max-width: 600px) {
+            .nav {
+                padding: 20px;
+                align-items: flex-start;
+            }
+
+            .nav__links {
+                justify-content: flex-end;
+                gap: 12px;
+                font-size: 0.85rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                min-height: 620px;
+            }
+
+            .badge {
+                right: 20px;
+                bottom: 20px;
+                font-size: 0.85rem;
+            }
+
+            .fab {
+                right: 10px;
+                width: 38px;
+                height: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body id="top">
+
+    <header class="hero">
+        <img class="hero__bg" src="https://picsum.photos/id/1036/1600/900" alt="Beautiful mountain landscape">
+
+        <nav class="nav" aria-label="Main navigation">
+            <a class="logo" href="#top">Priyanshu.dev</a>
+
+            <div class="nav__links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+
+        <div class="hero__content">
+            <div class="eyebrow">BCA Artificial Intelligence</div>
+
+            <h1>Building Ideas Into Digital Experiences</h1>
+
+            <p>
+                Hi, I'm Priyanshu Prajapati, a student learning web development
+                and building projects with HTML, CSS, JavaScript and React.
+            </p>
+
+            <a class="btn" href="#about">Explore My Profile</a>
+        </div>
+
+        <div class="badge">
+            <strong>Web Dev</strong>
+            Learning by building
+        </div>
+    </header>
+
+    <a class="fab" href="#top" aria-label="Back to top">↑</a>
+
+    <section class="next" id="about">
+        <h2>About Me</h2>
+        <p>
+            I'm pursuing BCA in Artificial Intelligence at Invertis University.
+            I enjoy creating websites and improving my frontend development skills
+            through practical assignments and projects.
+        </p>
+        <a class="profile-link" href="https://github.com/priyanshuprajapati07" target="_blank"
+            rel="noopener noreferrer">
+            Visit My GitHub →
+        </a>
+    </section>
+
+    <section class="next" id="skills">
+        <h2>My Skills</h2>
+        <p>
+            HTML · CSS · JavaScript · React Basics · Tailwind CSS · Java · Python · Git
+        </p>
+        <a class="profile-link" href="https://woodenkidsfurniture.in/" target="_blank" rel="noopener noreferrer">
+            View My Project →
+        </a>
+    </section>
+
+    <section class="next" id="contact">
+        <h2>Connect With Me</h2>
+        <p>Let's connect and share ideas about web development.</p>
+        <a class="profile-link" href="https://linkedin.com/in/priyanshu-prajapati-p77" target="_blank"
+            rel="noopener noreferrer">
+            My LinkedIn Profile →
+        </a>
+    </section>
+
+    <footer>
+        <p>Assignment 29 | Priyanshu Prajapati | Invertis University</p>
+    </footer>
+
+</body>
+
+</html>

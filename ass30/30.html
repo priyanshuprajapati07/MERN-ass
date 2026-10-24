@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Priyanshu Prajapati's profile card and Wooden Kids Furniture product card.">
+    <title>Assignment 30 - Profile & Product Cards</title>
+
+    <style>
+        :root {
+            --primary: #5b4bdb;
+            --wood: #795536;
+            --wood-dark: #563b27;
+            --cream: #fffaf1;
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #eef0f8;
+            color: #253047;
+            font-family: system-ui, Arial, sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 3rem 1rem;
+        }
+
+        /* PROFILE CARD */
+        .profile {
+            width: 300px;
+            max-width: 100%;
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .profile__cover {
+            height: 100px;
+            background: linear-gradient(120deg, var(--primary), #00b4d8);
+        }
+
+        .profile__avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            margin-top: -50px;
+            object-fit: cover;
+        }
+
+        .profile__body {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .profile h2 {
+            margin: .5rem 0 0;
+            font-size: 1.4rem;
+        }
+
+        .profile p {
+            color: #666;
+            margin: .25rem 0 1rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            gap: 8px;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .stats strong {
+            display: block;
+            font-size: 1.2rem;
+        }
+
+        .stats span {
+            font-size: .8rem;
+            color: #888;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: .7rem 1.4rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background .2s, transform .2s;
+        }
+
+        .btn:hover {
+            background: #3f31b0;
+            transform: translateY(-2px);
+        }
+
+        /* PRODUCT CARD */
+        .product {
+            width: 320px;
+            max-width: 100%;
+            background: var(--cream);
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+            overflow: hidden;
+            position: relative;
+            transition: transform .2s;
+        }
+
+        .product:hover {
+            transform: translateY(-6px);
+        }
+
+        .product img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product__tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--wood-dark);
+            color: #fff;
+            font-size: .75rem;
+            font-weight: 700;
+            padding: .35rem .7rem;
+            border-radius: 999px;
+        }
+
+        .product__body {
+            padding: 1.25rem;
+        }
+
+        .product h2 {
+            margin: 0 0 .25rem;
+            font-size: 1.2rem;
+            color: var(--wood-dark);
+        }
+
+        .product__description {
+            color: #6f6256;
+            font-size: .92rem;
+            line-height: 1.5;
+        }
+
+        .rating {
+            color: #d89416;
+            font-size: .9rem;
+        }
+
+        .price {
+            margin: .75rem 0;
+        }
+
+        .price strong {
+            font-size: 1.5rem;
+            color: var(--wood-dark);
+        }
+
+        .product .btn {
+            display: block;
+            text-align: center;
+            border-radius: 10px;
+            background: var(--wood);
+        }
+
+        .product .btn:hover {
+            background: var(--wood-dark);
+        }
+
+        .profile-link {
+            display: block;
+            margin-top: 12px;
+            color: var(--primary);
+            font-size: .9rem;
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 400px) {
+            body {
+                padding: 1.5rem 1rem;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Profile Card -->
+    <article class="profile">
+        <div class="profile__cover"></div>
+
+        <img class="profile__avatar" src="https://picsum.photos/id/1005/200/200" alt="Profile avatar placeholder">
+
+        <div class="profile__body">
+            <h2>Priyanshu Prajapati</h2>
+            <p>BCA Artificial Intelligence · Invertis University</p>
+
+            <div class="stats">
+                <div>
+                    <strong>HTML</strong>
+                    <span>Structure</span>
+                </div>
+                <div>
+                    <strong>CSS</strong>
+                    <span>Styling</span>
+                </div>
+                <div>
+                    <strong>JS</strong>
+                    <span>Learning</span>
+                </div>
+            </div>
+
+            <a class="btn" href="https://github.com/priyanshuprajapati07" target="_blank" rel="noopener noreferrer">
+                View GitHub
+            </a>
+
+            <a class="profile-link" href="https://linkedin.com/in/priyanshu-prajapati-p77" target="_blank"
+                rel="noopener noreferrer">
+                Connect on LinkedIn
+            </a>
+        </div>
+    </article>
+
+    <!-- Wooden Kids Furniture Product Card -->
+    <article class="product">
+        <span class="product__tag">Kids Furniture</span>
+
+        <img src="https://picsum.photos/seed/woodenkidsdesk/600/400"
+            alt="Product image placeholder for a wooden kids study desk">
+
+        <div class="product__body">
+            <h2>Wooden Kids Study Table</h2>
+
+            <div class="rating" aria-label="Product rating not specified">
+                ★★★★★ <small>Wooden Kids Furniture</small>
+            </div>
+
+            <p class="product__description">
+                A wooden study table designed for a comfortable and organized
+                kids' study space.
+            </p>
+
+            <div class="price">
+                <strong>₹2,999</strong>
+            </div>
+
+            <a class="btn" href="https://woodenkidsfurniture.in/" target="_blank" rel="noopener noreferrer">
+                View Product Website
+            </a>
+        </div>
+    </article>
+
+</body>
+
+</html>
