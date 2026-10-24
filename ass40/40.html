@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Priyanshu Prajapati's responsive developer portfolio using CSS Grid.">
+    <title>Priyanshu Prajapati | Developer Portfolio</title>
+
+    <style>
+        :root {
+            --ink: #35271f;
+            --paper: #fff8ef;
+            --accent: #79543a;
+            --card: #ffffff;
+            --border: #e5d9cc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .layout {
+            display: grid;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            grid-template-areas:
+                "head head head head head head head head head head head head"
+                "hero hero hero hero hero hero hero about about about about about"
+                "p1 p1 p1 p2 p2 p2 p3 p3 p3 p4 p4 p4"
+                "skills skills skills skills skills skills contact contact contact contact contact contact"
+                "foot foot foot foot foot foot foot foot foot foot foot foot";
+        }
+
+        .head {
+            grid-area: head;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-bottom: 3px double var(--ink);
+            padding-bottom: 0.75rem;
+        }
+
+        .head h1 {
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+        }
+
+        .head nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .head nav a {
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .head nav a:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            grid-area: hero;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            min-height: 320px;
+            background: #c6ad93;
+        }
+
+        .hero img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+        }
+
+        .hero h2 {
+            position: absolute;
+            z-index: 1;
+            left: 1.5rem;
+            right: 1rem;
+            bottom: 1.5rem;
+            color: #fff;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .about {
+            grid-area: about;
+            background: var(--ink);
+            color: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .about h2 {
+            color: #e8c7a5;
+            margin-bottom: 0.75rem;
+        }
+
+        .about p+p {
+            margin-top: 0.75rem;
+        }
+
+        .project {
+            border: 1px solid var(--border);
+            padding: 1rem;
+            border-radius: 8px;
+            background: var(--card);
+            overflow-wrap: anywhere;
+        }
+
+        .project h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .p1 {
+            grid-area: p1;
+        }
+
+        .p2 {
+            grid-area: p2;
+        }
+
+        .p3 {
+            grid-area: p3;
+        }
+
+        .p4 {
+            grid-area: p4;
+        }
+
+        .project a {
+            display: inline-block;
+            margin-top: 0.75rem;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .skills {
+            grid-area: skills;
+        }
+
+        .skills h2,
+        .contact h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .skills ul {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.5rem;
+            list-style: none;
+            padding: 0;
+            margin-top: 0.75rem;
+        }
+
+        .skills li {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 5px;
+            overflow-wrap: anywhere;
+        }
+
+        .contact {
+            grid-area: contact;
+            background: #f1e4d6;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .contact p {
+            margin-top: 0.5rem;
+        }
+
+        .contact a {
+            overflow-wrap: anywhere;
+        }
+
+        .foot {
+            grid-area: foot;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .layout {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-areas:
+                    "head head"
+                    "hero hero"
+                    "about about"
+                    "p1 p2"
+                    "p3 p4"
+                    "skills skills"
+                    "contact contact"
+                    "foot foot";
+            }
+        }
+
+        @media (max-width: 520px) {
+            .layout {
+                grid-template-columns: minmax(0, 1fr);
+                padding: 1rem;
+                gap: 1rem;
+                grid-template-areas:
+                    "head"
+                    "hero"
+                    "about"
+                    "p1"
+                    "p2"
+                    "p3"
+                    "p4"
+                    "skills"
+                    "contact"
+                    "foot";
+            }
+
+            .head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero {
+                min-height: 250px;
+            }
+
+            .skills ul {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="layout">
+
+        <header class="head">
+            <h1>Priyanshu Prajapati</h1>
+            <nav aria-label="Main navigation">
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <section class="hero" aria-label="Portfolio introduction">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
+                alt="Laptop and workspace used for web development">
+            <h2>Learning, Building and Growing in Web Development.</h2>
+        </section>
+
+        <section class="about" id="about">
+            <h2>About Me</h2>
+            <p>
+                Hello! I am Priyanshu Prajapati, a BCA Artificial Intelligence
+                student at Invertis University.
+            </p>
+            <p>
+                I am learning frontend and full-stack web development and
+                improving my skills by building practical projects.
+            </p>
+            <p>
+                My current focus is HTML, CSS, JavaScript and React.
+            </p>
+        </section>
+
+        <section id="projects" class="project p1">
+            <h3>Wooden Kids Furniture</h3>
+            <p>
+                A website project for wooden kids' furniture products.
+            </p>
+            <a href="https://woodenkidsfurniture.in/" target="_blank" rel="noopener noreferrer">Visit Website ↗</a>
+        </section>
+
+        <article class="project p2">
+            <h3>Login UI</h3>
+            <p>
+                A login form practice project focused on Flexbox,
+                spacing and responsive styling.
+            </p>
+        </article>
+
+        <article class="project p3">
+            <h3>Photo Gallery</h3>
+            <p>
+                A responsive image gallery created to practise
+                CSS Grid and different screen sizes.
+            </p>
+        </article>
+
+        <article class="project p4">
+            <h3>Dashboard Layout</h3>
+            <p>
+                A dashboard layout exercise using CSS Grid named areas
+                and responsive design.
+            </p>
+        </article>
+
+        <section class="skills" id="skills">
+            <h2>My Skills</h2>
+            <p>Technologies and tools I am learning or using:</p>
+            <ul>
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+                <li>React Basics</li>
+                <li>CSS Grid</li>
+                <li>Flexbox</li>
+                <li>Java</li>
+                <li>Python</li>
+                <li>Git & GitHub</li>
+            </ul>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2>Contact Me</h2>
+            <p>
+                Email:
+                <a href="mailto:princek57350@gmail.com">
+                    princek57350@gmail.com
+                </a>
+            </p>
+            <p>
+                GitHub:
+                <a href="https://github.com/priyanshuprajapati07" target="_blank" rel="noopener noreferrer">
+                    View GitHub Profile
+                </a>
+            </p>
+            <p>
+                LinkedIn:
+                <a href="https://linkedin.com/in/priyanshu-prajapati-p77" target="_blank" rel="noopener noreferrer">
+                    View LinkedIn Profile
+                </a>
+            </p>
+            <p>Location: New Delhi, India</p>
+        </section>
+
+        <footer class="foot">
+            &copy; 2026 Priyanshu Prajapati | Portfolio built with CSS Grid.
+        </footer>
+
+    </main>
+</body>
+
+</html>

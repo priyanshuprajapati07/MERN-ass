@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Priyanshu Prajapati's responsive portfolio using three CSS breakpoints.">
+    <title>Responsive Portfolio | Priyanshu Prajapati</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        :root {
+            --primary: #79543a;
+            --dark: #35271f;
+            --background: #fff8ef;
+            --card: #ffffff;
+            --border: #e5d9cc;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            line-height: 1.6;
+            background: var(--background);
+            color: var(--dark);
+        }
+
+        header {
+            background: var(--dark);
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2rem;
+        }
+
+        header strong {
+            font-size: 1.3rem;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #e8c7a5;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .intro {
+            margin-bottom: 1.5rem;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+
+        .card {
+            min-width: 0;
+            background: var(--card);
+            padding: 1.25rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(53, 39, 31, 0.08);
+        }
+
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .card p {
+            overflow-wrap: anywhere;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 0.75rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .badge {
+            display: inline-block;
+            margin-top: 1rem;
+            background: #ead8c4;
+            color: var(--dark);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+        }
+
+        .test-section {
+            margin-top: 2rem;
+        }
+
+        .table-wrap {
+            margin-top: 1rem;
+            overflow-x: auto;
+            background: #fff;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th,
+        td {
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+        }
+
+        th {
+            background: #ead8c4;
+        }
+
+        footer {
+            margin-top: 2rem;
+            padding: 1rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Breakpoint 1: tablets and small laptops */
+        @media (max-width: 1024px) {
+            .cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Breakpoint 2: large phones */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem;
+            }
+
+            main {
+                padding: 1.25rem;
+            }
+
+            h1 {
+                font-size: 1.9rem;
+            }
+
+            nav {
+                gap: 0.9rem;
+            }
+        }
+
+        /* Breakpoint 3: small phones */
+        @media (max-width: 480px) {
+            .cards {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            nav {
+                justify-content: flex-start;
+                gap: 0.65rem 1rem;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+
+            .test-section h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <strong>Priyanshu Prajapati</strong>
+
+        <nav aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h1>My Responsive Portfolio</h1>
+            <p class="intro">
+                I am Priyanshu Prajapati, a BCA Artificial Intelligence student
+                at Invertis University, learning frontend and full-stack
+                web development.
+            </p>
+        </section>
+
+        <section class="cards" id="projects">
+            <article class="card" id="about">
+                <h2>About Me</h2>
+                <p>BCA AI student focused on learning web development and building practical projects.</p>
+            </article>
+
+            <article class="card">
+                <h2>My Skills</h2>
+                <p>HTML, CSS, JavaScript, React basics, Java, Python and GitHub.</p>
+            </article>
+
+            <article class="card">
+                <h2>Wooden Kids Furniture</h2>
+                <p>A website project featuring wooden furniture for kids.</p>
+                <a href="https://woodenkidsfurniture.in/" target="_blank" rel="noopener noreferrer">
+                    Visit Website ↗
+                </a>
+            </article>
+
+            <article class="card">
+                <h2>CSS Practice</h2>
+                <p>Responsive layouts created while practising CSS Grid, Flexbox and media queries.</p>
+            </article>
+        </section>
+
+        <span class="badge">
+            Responsive layout: 4 columns → 2 columns → 1 column
+        </span>
+
+        <section class="test-section">
+            <h2>Responsive Test Log</h2>
+            <p>Use Chrome DevTools and press Ctrl + Shift + M to test screen sizes.</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Screen width</th>
+                            <th>Expected layout</th>
+                            <th>What to check</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1440px desktop</td>
+                            <td>4 columns</td>
+                            <td>Cards display in one row</td>
+                        </tr>
+                        <tr>
+                            <td>820px tablet</td>
+                            <td>2 columns</td>
+                            <td>Cards form two rows</td>
+                        </tr>
+                        <tr>
+                            <td>390px phone</td>
+                            <td>1 column</td>
+                            <td>Cards stack vertically</td>
+                        </tr>
+                        <tr>
+                            <td>280px narrow screen</td>
+                            <td>1 column</td>
+                            <td>No unintended page-wide horizontal scrolling</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="contact" class="test-section">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:princek57350@gmail.com">princek57350@gmail.com</a></p>
+            <p>GitHub: <a href="https://github.com/priyanshuprajapati07" target="_blank" rel="noopener noreferrer">My
+                    GitHub Profile</a></p>
+            <p>LinkedIn: <a href="https://linkedin.com/in/priyanshu-prajapati-p77" target="_blank"
+                    rel="noopener noreferrer">My LinkedIn Profile</a></p>
+        </section>
+
+        <footer>
+            &copy; 2026 Priyanshu Prajapati | Built with HTML and CSS
+        </footer>
+    </main>
+</body>
+
+</html>

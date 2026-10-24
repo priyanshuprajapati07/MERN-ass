@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Responsive wooden kids furniture dashboard using CSS Grid.">
+    <title>Wooden Kids Furniture - Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        :root {
+            --brown: #79543a;
+            --dark: #35271f;
+            --cream: #fff8ef;
+            --green: #47734b;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: #f2eee8;
+            color: var(--dark);
+        }
+
+        .dashboard {
+            display: grid;
+            min-height: 100vh;
+            grid-template-columns: 220px repeat(3, minmax(0, 1fr));
+            grid-template-rows: 64px auto 1fr 48px;
+            grid-template-areas:
+                "header header header header"
+                "sidebar stat1 stat2 stat3"
+                "sidebar chart chart activity"
+                "footer footer footer footer";
+            gap: 1rem;
+            padding: 0 1rem 1rem 0;
+        }
+
+        .dashboard>* {
+            background: #fff;
+            border-radius: 10px;
+            padding: 1rem;
+            min-width: 0;
+        }
+
+        /* Header */
+        .header {
+            grid-area: header;
+            background: var(--dark);
+            color: #fff;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .header strong {
+            font-size: 1.1rem;
+        }
+
+        .header span {
+            font-size: 0.9rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            grid-area: sidebar;
+            background: var(--brown);
+            color: #fff;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .sidebar h2 {
+            font-size: 1.05rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .sidebar a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Statistics cards */
+        .stat1 {
+            grid-area: stat1;
+        }
+
+        .stat2 {
+            grid-area: stat2;
+        }
+
+        .stat3 {
+            grid-area: stat3;
+        }
+
+        .stat span {
+            display: block;
+            color: #6b625c;
+            font-size: 0.9rem;
+        }
+
+        .stat strong {
+            display: block;
+            font-size: clamp(1.3rem, 2.5vw, 2rem);
+            color: var(--brown);
+            margin-top: 0.5rem;
+        }
+
+        .stat small {
+            display: block;
+            color: var(--green);
+            margin-top: 0.25rem;
+        }
+
+        /* Chart */
+        .chart {
+            grid-area: chart;
+        }
+
+        .chart h2,
+        .activity h2 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .chart p {
+            color: #6b625c;
+            font-size: 0.9rem;
+        }
+
+        .bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            height: 160px;
+            margin-top: 1.5rem;
+            border-bottom: 1px solid #e3d9ce;
+            padding-bottom: 0;
+        }
+
+        .bar {
+            flex: 1;
+            min-width: 0;
+            background: linear-gradient(#c99b70, var(--brown));
+            border-radius: 5px 5px 0 0;
+            position: relative;
+        }
+
+        .bar-labels {
+            display: flex;
+            justify-content: space-around;
+            gap: 5px;
+            margin-top: 0.5rem;
+            color: #6b625c;
+            font-size: 0.75rem;
+        }
+
+        .bar-labels span {
+            flex: 1;
+            text-align: center;
+        }
+
+        /* Activity */
+        .activity {
+            grid-area: activity;
+        }
+
+        .activity ul {
+            padding-left: 1.2rem;
+        }
+
+        .activity li {
+            margin: 0.8rem 0;
+            font-size: 0.9rem;
+        }
+
+        .activity p {
+            color: #6b625c;
+            font-size: 0.85rem;
+        }
+
+        /* Footer */
+        .footer {
+            grid-area: footer;
+            border-radius: 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6b625c;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 800px) {
+            .dashboard {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-rows: auto;
+                grid-template-areas:
+                    "header header"
+                    "stat1 stat2"
+                    "stat3 stat3"
+                    "chart chart"
+                    "activity activity"
+                    "sidebar sidebar"
+                    "footer footer";
+                padding: 0 0.75rem 0.75rem;
+                gap: 0.75rem;
+            }
+
+            .header {
+                margin: 0 -0.75rem;
+            }
+
+            .sidebar {
+                border-radius: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dashboard {
+                grid-template-columns: minmax(0, 1fr);
+                grid-template-areas:
+                    "header"
+                    "stat1"
+                    "stat2"
+                    "stat3"
+                    "chart"
+                    "activity"
+                    "sidebar"
+                    "footer";
+            }
+
+            .header {
+                align-items: flex-start;
+                flex-direction: column;
+                justify-content: center;
+                padding-block: 1rem;
+            }
+
+            .bars {
+                gap: 6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="dashboard">
+
+        <!-- Header -->
+        <header class="header">
+            <strong>Wooden Kids Furniture | Dashboard</strong>
+            <span>Hello, Priyanshu</span>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Navigation</h2>
+            <ul>
+                <li><a href="https://woodenkidsfurniture.in/">🏠 Home</a></li>
+                <li><a href="#stats">📊 Overview</a></li>
+                <li><a href="#sales">🪑 Products</a></li>
+                <li><a href="#activity">📦 Orders</a></li>
+                <li><a href="#footer">⚙️ Information</a></li>
+            </ul>
+        </aside>
+
+        <!-- Statistics -->
+        <section class="stat stat1" id="stats">
+            <span>Products</span>
+            <strong>07</strong>
+            <small>Sample dashboard value</small>
+        </section>
+
+        <section class="stat stat2">
+            <span>Orders</span>
+            <strong>24</strong>
+            <small>Sample dashboard value</small>
+        </section>
+
+        <section class="stat stat3">
+            <span>Revenue</span>
+            <strong>₹12,500</strong>
+            <small>Sample dashboard value</small>
+        </section>
+
+        <!-- Sales Chart -->
+        <section class="chart" id="sales">
+            <h2>Weekly Sales Overview</h2>
+            <p>Illustrative chart data — not actual business sales.</p>
+
+            <div class="bars" aria-label="Illustrative weekly sales chart">
+                <span class="bar" style="height: 40%;"></span>
+                <span class="bar" style="height: 60%;"></span>
+                <span class="bar" style="height: 48%;"></span>
+                <span class="bar" style="height: 78%;"></span>
+                <span class="bar" style="height: 65%;"></span>
+                <span class="bar" style="height: 95%;"></span>
+                <span class="bar" style="height: 72%;"></span>
+            </div>
+
+            <div class="bar-labels">
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span>Fri</span>
+                <span>Sat</span>
+                <span>Sun</span>
+            </div>
+        </section>
+
+        <!-- Recent Activity -->
+        <section class="activity" id="activity">
+            <h2>Recent Activity</h2>
+            <ul>
+                <li>Product listing reviewed</li>
+                <li>Furniture collection updated</li>
+                <li>Website content checked</li>
+            </ul>
+            <p>These are example activities for the assignment.</p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer" id="footer">
+            &copy; 2026 Wooden Kids Furniture | CSS Grid Dashboard
+        </footer>
+
+    </main>
+
+</body>
+
+</html>

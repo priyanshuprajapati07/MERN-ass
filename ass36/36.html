@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore our wooden kids furniture photo gallery.">
+    <title>Wooden Kids Furniture | Gallery</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: #fff8ef;
+            color: #35271f;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            color: #79543a;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #6b625c;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            grid-auto-rows: 180px;
+            gap: 12px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .gallery figure {
+            overflow: hidden;
+            border-radius: 12px;
+            position: relative;
+            background: #eadfd3;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery figure:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery figcaption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0.75rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .wide {
+            grid-column: span 2;
+        }
+
+        .tall {
+            grid-row: span 2;
+        }
+
+        .big {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #79543a;
+        }
+
+        .footer a {
+            color: #79543a;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        @media (max-width: 800px) {
+            body {
+                padding: 1.25rem;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+                grid-auto-rows: 230px;
+            }
+
+            .wide,
+            .big {
+                grid-column: auto;
+            }
+
+            .tall {
+                grid-row: auto;
+            }
+
+            .header h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>Wooden Kids Furniture Gallery</h1>
+        <p>Explore ideas for a beautiful and comfortable kids' study space.</p>
+    </header>
+
+    <main class="gallery">
+
+        <figure class="big">
+            <img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?auto=format&fit=crop&w=900&q=80"
+                alt="Warm and inviting children's room">
+            <figcaption>Kids' Room Inspiration</figcaption>
+        </figure>
+
+        <figure>
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=500&q=80"
+                alt="Comfortable and stylish room interior">
+            <figcaption>Beautiful Interiors</figcaption>
+        </figure>
+
+        <figure class="tall">
+            <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=500&q=80"
+                alt="Organised room with wooden furniture">
+            <figcaption>Organised Spaces</figcaption>
+        </figure>
+
+        <figure>
+            <img src="https://images.unsplash.com/photo-1598300053653-6d5e7b7f8c7b?auto=format&fit=crop&w=500&q=80"
+                alt="Wooden furniture and home decor">
+            <figcaption>Wooden Details</figcaption>
+        </figure>
+
+        <figure class="wide">
+            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80"
+                alt="Warm neutral interior with wooden furniture">
+            <figcaption>Warm & Natural Style</figcaption>
+        </figure>
+
+        <figure>
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=500&q=80"
+                alt="Minimal and elegant home interior">
+            <figcaption>Minimal Design</figcaption>
+        </figure>
+
+        <figure>
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=500&q=80"
+                alt="Bright interior with natural colours">
+            <figcaption>Natural Colours</figcaption>
+        </figure>
+
+    </main>
+
+    <footer class="footer">
+        <p>
+            &copy; 2026 Wooden Kids Furniture |
+            <a href="https://woodenkidsfurniture.in/">Visit Website</a>
+        </p>
+    </footer>
+
+</body>
+
+</html>
