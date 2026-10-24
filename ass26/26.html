@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Assignment 26 by Priyanshu Prajapati demonstrating the CSS Box Model with annotated layers and calculations.">
+
+    <meta name="author" content="Priyanshu Prajapati">
+
+    <title>Assignment 26 | CSS Box Model</title>
+
+    <style>
+        :root {
+            --primary: #1d3557;
+            --accent: #f4a261;
+            --background: #f5f7fc;
+            --surface: #ffffff;
+            --text: #222b3a;
+            --muted: #667085;
+            --margin-color: #f9cb9c;
+            --border-color: #ffe599;
+            --padding-color: #b6d7a8;
+            --content-color: #9fc5e8;
+            --radius: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 1.5rem;
+            font-family: "Segoe UI", system-ui, sans-serif;
+            line-height: 1.6;
+            background: var(--background);
+            color: var(--text);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: var(--primary);
+            color: #ffffff;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+        }
+
+        header h1 {
+            margin: 0 0 0.5rem;
+        }
+
+        header p {
+            margin: 0;
+            color: #e5eaf5;
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+
+        .card {
+            background: var(--surface);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: 0 3px 12px rgba(29, 53, 87, 0.08);
+            overflow: hidden;
+        }
+
+        code {
+            background: #eef1f7;
+            color: #1d3557;
+            padding: 0.15rem 0.35rem;
+            border-radius: 4px;
+            overflow-wrap: anywhere;
+        }
+
+        /* ===== ELEMENT BEING ANALYSED ===== */
+
+        .my-box {
+            width: 200px;
+            height: 80px;
+            padding: 20px;
+            border: 10px solid var(--primary);
+            margin: 30px;
+            background: #a8dadc;
+            display: grid;
+            place-items: center;
+            font-weight: bold;
+            color: #172b3d;
+            flex-shrink: 0;
+        }
+
+        /* ===== BOX MODEL LAYERS ===== */
+
+        .demo {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .actual-example {
+            min-width: 260px;
+        }
+
+        .layer {
+            display: grid;
+            place-items: center;
+            position: relative;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            min-width: 0;
+        }
+
+        .l-margin {
+            background: var(--margin-color);
+            padding: 36px;
+        }
+
+        .l-border {
+            background: var(--border-color);
+            padding: 22px;
+        }
+
+        .l-padding {
+            background: var(--padding-color);
+            padding: 36px;
+        }
+
+        .l-content {
+            background: var(--content-color);
+            padding: 28px 40px;
+            color: #172b3d;
+        }
+
+        .tag {
+            position: absolute;
+            top: 3px;
+            left: 8px;
+            font-weight: bold;
+            font-size: 0.72rem;
+        }
+
+        .diagram-wrapper {
+            overflow-x: auto;
+            padding: 0.5rem;
+        }
+
+        /* ===== TABLE ===== */
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 300px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d5dbe5;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background: #eef1fb;
+            color: var(--primary);
+        }
+
+        .note {
+            background: #fff8ec;
+            border-left: 5px solid var(--accent);
+            padding: 1rem;
+            border-radius: 5px;
+        }
+
+        .note p {
+            margin-bottom: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 0.75rem;
+            }
+
+            header,
+            .card {
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .demo {
+                gap: 1rem;
+            }
+
+            .my-box {
+                margin: 20px;
+            }
+
+            .l-margin {
+                padding: 30px;
+            }
+
+            .l-border {
+                padding: 18px;
+            }
+
+            .l-padding {
+                padding: 25px;
+            }
+
+            .l-content {
+                padding: 20px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Header -->
+        <header>
+            <h1>CSS Box Model — Annotated</h1>
+            <p>Assignment 26 | Priyanshu Prajapati</p>
+            <p>BCA Artificial Intelligence | Invertis University</p>
+        </header>
+
+        <!-- Actual Box -->
+        <section class="card">
+            <h2>1. The Element Being Analysed</h2>
+
+            <p>
+                The following box demonstrates the CSS properties
+                <code>content</code>, <code>padding</code>,
+                <code>border</code>, and <code>margin</code>.
+            </p>
+
+            <div class="demo">
+                <div class="my-box">Hello, Priyanshu!</div>
+            </div>
+        </section>
+
+        <!-- Annotated Diagram -->
+        <section class="card">
+            <h2>2. Visual Box Model Layers</h2>
+
+            <p>
+                Each colored layer represents one part of the CSS Box Model.
+            </p>
+
+            <div class="diagram-wrapper">
+                <div class="layer l-margin">
+                    <span class="tag">Margin: 30px</span>
+
+                    <div class="layer l-border">
+                        <span class="tag">Border: 10px</span>
+
+                        <div class="layer l-padding">
+                            <span class="tag">Padding: 20px</span>
+
+                            <div class="layer l-content">
+                                Content<br>
+                                200 × 80
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p><strong>Color legend:</strong></p>
+            <ul>
+                <li>Orange: Margin</li>
+                <li>Yellow: Border</li>
+                <li>Green: Padding</li>
+                <li>Blue: Content</li>
+            </ul>
+        </section>
+
+        <!-- Calculations -->
+        <section class="card">
+            <h2>3. Box Model Calculation</h2>
+
+            <p>
+                By default, CSS uses
+                <code>box-sizing: content-box</code>.
+            </p>
+
+            <div class="table-wrapper">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Content Width</th>
+                            <td>200px</td>
+                        </tr>
+                        <tr>
+                            <th>Padding</th>
+                            <td>20 × 2 = 40px</td>
+                        </tr>
+                        <tr>
+                            <th>Border</th>
+                            <td>10 × 2 = 20px</td>
+                        </tr>
+                        <tr>
+                            <th>Total Width</th>
+                            <td><strong>200 + 40 + 20 = 260px</strong></td>
+                        </tr>
+                        <tr>
+                            <th>Total Height</th>
+                            <td><strong>80 + 40 + 20 = 140px</strong></td>
+                        </tr>
+                        <tr>
+                            <th>Width Including Margins</th>
+                            <td>260 + 30 × 2 = 320px</td>
+                        </tr>
+                        <tr>
+                            <th>Height Including Margins</th>
+                            <td>140 + 30 × 2 = 200px</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note">
+                <strong>Remember:</strong>
+                Margin adds space outside the border. It is not included
+                in the element's CSS width or height.
+            </div>
+        </section>
+
+        <!-- Border Box -->
+        <section class="card">
+            <h2>4. Using box-sizing: border-box</h2>
+
+            <p>
+                With <code>box-sizing: border-box</code>, the declared width
+                includes the content, padding, and border.
+            </p>
+
+            <p>
+                For a width of 200px, padding of 20px on each side,
+                and a border of 10px on each side:
+            </p>
+
+            <p>
+                Content width = 200 − 40 − 20 = <strong>140px</strong>
+            </p>
+
+            <p>
+                The total width remains 200px, excluding margins.
+            </p>
+
+            <div class="note">
+                <strong>Developer tip:</strong>
+                Many developers use
+                <code>* { box-sizing: border-box; }</code>
+                to make element sizing easier to manage.
+            </div>
+        </section>
+
+        <!-- Student Information -->
+        <section class="card">
+            <h2>5. Student Information</h2>
+
+            <p><strong>Name:</strong> Priyanshu Prajapati</p>
+            <p><strong>Course:</strong> BCA Artificial Intelligence</p>
+            <p><strong>University:</strong> Invertis University</p>
+            <p><strong>Assignment:</strong> 26 — CSS Box Model</p>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Priyanshu Prajapati | Assignment 26</p>
+        </footer>
+
+    </div>
+</body>
+
+</html>

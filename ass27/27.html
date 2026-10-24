@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Assignment 27 by Priyanshu Prajapati demonstrating three CSS card variants using colors, gradients, borders, and border-radius.">
+
+    <meta name="author" content="Priyanshu Prajapati">
+
+    <title>Assignment 27 | Three Card Variants</title>
+
+    <style>
+        /* ===== DESIGN TOKENS ===== */
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3048c5;
+            --background: #f1f4f9;
+            --surface: #ffffff;
+            --text: #222b3a;
+            --muted: #626d7d;
+            --accent: #f4a261;
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 2rem;
+            font-family: "Segoe UI", system-ui, sans-serif;
+            line-height: 1.6;
+            background: var(--background);
+            color: var(--text);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .assignment-label {
+            display: inline-block;
+            padding: 0.35rem 0.8rem;
+            border-radius: 999px;
+            background: #e0e7ff;
+            color: #3048c5;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        h1 {
+            margin: 0.75rem 0 0.25rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+        }
+
+        header p {
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* ===== CARD LAYOUT ===== */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.5rem;
+            align-items: stretch;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            min-width: 0;
+            min-height: 280px;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            margin-top: 0.5rem;
+        }
+
+        .card .description {
+            flex-grow: 1;
+        }
+
+        .card a {
+            display: inline-block;
+            align-self: flex-start;
+            margin-top: 1rem;
+            padding: 0.55rem 1rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .card a:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        /* ===== VARIANT 1: SOFT ===== */
+        .card--soft {
+            background: var(--surface);
+            color: var(--text);
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(31, 45, 80, 0.10);
+        }
+
+        .card--soft a {
+            background: var(--primary);
+            color: #ffffff;
+            border-radius: 999px;
+        }
+
+        .card--soft a:hover {
+            background: var(--primary-dark);
+        }
+
+        /* ===== VARIANT 2: GRADIENT ===== */
+        .card--gradient {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #4a1c24;
+            border-radius: 0 40px 0 40px;
+        }
+
+        .card--gradient a {
+            background: #4a1c24;
+            color: #ffffff;
+            border-radius: 8px;
+        }
+
+        .card--gradient a:hover {
+            background: #6b2b36;
+        }
+
+        /* ===== VARIANT 3: OUTLINE ===== */
+        .card--outline {
+            background: #1b1b2f;
+            color: #e9e9f5;
+            border: 2px solid #00cfe8;
+            border-radius: 6px;
+        }
+
+        .card--outline a {
+            border: 2px solid #00cfe8;
+            color: #00cfe8;
+            border-radius: 4px;
+        }
+
+        .card--outline a:hover {
+            background: #00cfe8;
+            color: #1b1b2f;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 15px rgba(31, 45, 80, 0.06);
+        }
+
+        .about h2 {
+            margin-top: 0;
+        }
+
+        .about a {
+            color: var(--primary);
+            overflow-wrap: anywhere;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 800px) {
+            .cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            body {
+                padding: 1rem;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                min-height: 240px;
+            }
+
+            .about {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Header -->
+        <header>
+            <span class="assignment-label">Assignment 27</span>
+            <h1>Three Card Variants</h1>
+            <p>
+                Created by Priyanshu Prajapati |
+                BCA Artificial Intelligence
+            </p>
+        </header>
+
+        <!-- Card Variants -->
+        <main>
+            <section class="cards" aria-label="CSS card design examples">
+
+                <!-- Soft Card -->
+                <article class="card card--soft">
+                    <h2>01. Soft Card</h2>
+                    <p class="description">
+                        A clean white background, rounded 20px corners, and a
+                        gentle shadow create a simple, professional appearance.
+                    </p>
+                    <a href="https://github.com/priyanshuprajapati07" target="_blank" rel="noopener noreferrer">
+                        View GitHub
+                    </a>
+                </article>
+
+                <!-- Gradient Card -->
+                <article class="card card--gradient">
+                    <h2>02. Gradient Card</h2>
+                    <p class="description">
+                        A warm gradient background with two rounded corners and
+                        two sharp corners creates a distinctive visual style.
+                    </p>
+                    <a href="https://woodenkidsfurniture.in/" target="_blank" rel="noopener noreferrer">
+                        View Project
+                    </a>
+                </article>
+
+                <!-- Outline Card -->
+                <article class="card card--outline">
+                    <h2>03. Outline Card</h2>
+                    <p class="description">
+                        A dark background, bright cyan border, and compact
+                        corner radius create a modern, high-contrast design.
+                    </p>
+                    <a href="https://linkedin.com/in/priyanshu-prajapati-p77" target="_blank" rel="noopener noreferrer">
+                        LinkedIn Profile
+                    </a>
+                </article>
+
+            </section>
+
+            <!-- Student Details -->
+            <section class="about">
+                <h2>About the Developer</h2>
+
+                <p><strong>Name:</strong> Priyanshu Prajapati</p>
+                <p><strong>Course:</strong> BCA Artificial Intelligence</p>
+                <p><strong>University:</strong> Invertis University</p>
+
+                <p>
+                    <strong>GitHub:</strong>
+                    <a href="https://github.com/priyanshuprajapati07" target="_blank" rel="noopener noreferrer">
+                        github.com/priyanshuprajapati07
+                    </a>
+                </p>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Priyanshu Prajapati | Assignment 27</p>
+            <p>CSS Card Variants — Border Radius, Backgrounds and Shadows</p>
+        </footer>
+
+    </div>
+</body>
+
+</html>
