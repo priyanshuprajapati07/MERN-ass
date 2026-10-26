@@ -19,9 +19,9 @@ To install and verify Visual Studio Code, Node.js, npm, and the Live Server exte
 
 | Tool | Version | Status |
 |---|---|---|
-| Visual Studio Code | Add your version | Installed |
-| Node.js | Add your version | Installed |
-| npm | Add your version | Verified |
+| Visual Studio Code |  1.142.0 | Installed |
+| Node.js | 24.12.0 | Installed |
+| npm | 11.6.0 | Verified |
 | Live Server | Installed | Working |
 
 ## Conclusion
