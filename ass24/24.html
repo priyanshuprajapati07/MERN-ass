@@ -2,497 +2,146 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Design-token stylesheet using CSS custom properties.">
+  <title>Design Tokens with CSS Variables</title>
+  <style>
+    /* ===== DESIGN TOKENS ===== */
+    :root {
+      /* colours */
+      --color-primary: #3d5af1;
+      --color-primary-dark: #2b3fb5;
+      --color-accent: #ff6b6b;
+      --color-bg: #f5f7ff;
+      --color-surface: #ffffff;
+      --color-text: #1f2430;
+      --color-muted: #6b7280;
+      /* font sizes (modular scale 1.25) */
+      --fs-sm: .8rem;
+      --fs-base: 1rem;
+      --fs-md: 1.25rem;
+      --fs-lg: 1.563rem;
+      --fs-xl: 1.953rem;
+      --fs-2xl: 2.441rem;
+      /* spacing, radius, shadow */
+      --space-1: .25rem;
+      --space-2: .5rem;
+      --space-3: 1rem;
+      --space-4: 1.5rem;
+      --space-5: 2.5rem;
+      --radius: 10px;
+      --shadow: 0 4px 14px rgba(31, 36, 48, .12);
+      --font-body: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
 
-    <meta name="description"
-        content="Assignment 24 by Priyanshu Prajapati demonstrating CSS design tokens, custom properties, typography, spacing, and dark theme.">
+    /* Changing tokens in one place re-themes the whole page: */
+    [data-theme="dark"] {
+      --color-bg: #12141c;
+      --color-surface: #1e2230;
+      --color-text: #eef0f7;
+      --color-muted: #9aa3b5;
+    }
 
-    <meta name="author" content="Priyanshu Prajapati">
+    /* ===== BASE ===== */
+    body {
+      margin: 0;
+      padding: var(--space-5);
+      font: var(--fs-base)/1.6 var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      transition: background .3s;
+    }
 
-    <title>Assignment 24 | Design Tokens with CSS Variables</title>
+    h1 {
+      font-size: var(--fs-2xl);
+      margin: 0 0 var(--space-3);
+    }
 
-    <style>
-        /* ===== ASSIGNMENT 24: DESIGN TOKENS ===== */
+    h2 {
+      font-size: var(--fs-lg);
+    }
 
-        :root {
-            /* Colors */
-            --color-primary: #3d5af1;
-            --color-primary-dark: #2b3fb5;
-            --color-accent: #ff6b6b;
-            --color-bg: #f5f7ff;
-            --color-surface: #ffffff;
-            --color-text: #1f2430;
-            --color-muted: #6b7280;
-            --color-border: #e2e8f0;
+    small {
+      font-size: var(--fs-sm);
+      color: var(--color-muted);
+    }
 
-            /* Font sizes */
-            --fs-sm: 0.8rem;
-            --fs-base: 1rem;
-            --fs-md: 1.25rem;
-            --fs-lg: 1.563rem;
-            --fs-xl: 1.953rem;
-            --fs-2xl: 2.441rem;
+    /* ===== COMPONENTS ===== */
+    .btn {
+      background: var(--color-primary);
+      color: #fff;
+      border: 0;
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius);
+      font-size: var(--fs-base);
+      cursor: pointer;
+    }
 
-            /* Spacing */
-            --space-1: 0.25rem;
-            --space-2: 0.5rem;
-            --space-3: 1rem;
-            --space-4: 1.5rem;
-            --space-5: 2.5rem;
+    .btn:hover {
+      background: var(--color-primary-dark);
+    }
 
-            /* Design properties */
-            --radius: 12px;
-            --shadow: 0 4px 14px rgba(31, 36, 48, 0.10);
-            --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
-        }
+    .btn--accent {
+      background: var(--color-accent);
+    }
 
-        /* Dark theme */
-        [data-theme="dark"] {
-            --color-bg: #12141c;
-            --color-surface: #1e2230;
-            --color-text: #eef0f7;
-            --color-muted: #9aa3b5;
-            --color-border: #353b4d;
-            --shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-        }
+    .card {
+      background: var(--color-surface);
+      padding: var(--space-4);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-block: var(--space-4);
+    }
 
-        /* ===== RESET AND BASE ===== */
+    .swatches {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
 
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            padding: var(--space-4);
-            font-family: var(--font-body);
-            font-size: var(--fs-base);
-            line-height: 1.6;
-            background: var(--color-bg);
-            color: var(--color-text);
-            transition: background 0.3s, color 0.3s;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        /* ===== HEADER ===== */
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: var(--space-3);
-            margin-bottom: var(--space-5);
-        }
-
-        .brand {
-            color: var(--color-primary);
-            font-size: var(--fs-sm);
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        h1 {
-            margin: var(--space-1) 0;
-            font-size: var(--fs-2xl);
-            line-height: 1.2;
-        }
-
-        h2 {
-            margin-top: 0;
-            font-size: var(--fs-lg);
-        }
-
-        p {
-            margin-top: var(--space-2);
-        }
-
-        .subtitle {
-            color: var(--color-muted);
-            margin-bottom: 0;
-        }
-
-        /* ===== BUTTONS ===== */
-
-        .btn {
-            display: inline-block;
-            border: none;
-            border-radius: var(--radius);
-            padding: var(--space-2) var(--space-4);
-            background: var(--color-primary);
-            color: #ffffff;
-            font-size: var(--fs-base);
-            font-family: inherit;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.2s;
-        }
-
-        .btn:hover {
-            background: var(--color-primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .btn--accent {
-            background: var(--color-accent);
-        }
-
-        .btn--accent:hover {
-            background: #e65353;
-        }
-
-        .btn:focus-visible {
-            outline: 3px solid var(--color-accent);
-            outline-offset: 3px;
-        }
-
-        /* ===== CARDS ===== */
-
-        .card {
-            background: var(--color-surface);
-            padding: var(--space-4);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            margin-bottom: var(--space-4);
-            transition: background 0.3s, border-color 0.3s;
-        }
-
-        .card-description {
-            color: var(--color-muted);
-            margin-bottom: var(--space-3);
-        }
-
-        /* ===== COLOR SWATCHES ===== */
-
-        .swatches {
-            display: flex;
-            gap: var(--space-3);
-            flex-wrap: wrap;
-        }
-
-        .swatch {
-            display: flex;
-            align-items: end;
-            width: 110px;
-            min-height: 75px;
-            padding: var(--space-2);
-            border-radius: var(--radius);
-            color: #ffffff;
-            font-size: var(--fs-sm);
-            font-weight: 600;
-            overflow-wrap: anywhere;
-        }
-
-        /* ===== TYPOGRAPHY ===== */
-
-        .type-sample {
-            padding: var(--space-2) 0;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .type-sample:last-child {
-            border-bottom: none;
-        }
-
-        .type-label {
-            display: block;
-            color: var(--color-muted);
-            font-size: var(--fs-sm);
-        }
-
-        .type-xl {
-            font-size: var(--fs-xl);
-        }
-
-        .type-lg {
-            font-size: var(--fs-lg);
-        }
-
-        .type-md {
-            font-size: var(--fs-md);
-        }
-
-        .type-base {
-            font-size: var(--fs-base);
-        }
-
-        .type-sm {
-            font-size: var(--fs-sm);
-        }
-
-        /* ===== SPACING EXAMPLES ===== */
-
-        .spacing-item {
-            display: flex;
-            align-items: center;
-            gap: var(--space-3);
-            margin-bottom: var(--space-3);
-            flex-wrap: wrap;
-        }
-
-        .spacing-box {
-            height: 24px;
-            background: var(--color-primary);
-            border-radius: 4px;
-        }
-
-        .space-1 {
-            width: var(--space-1);
-        }
-
-        .space-2 {
-            width: var(--space-2);
-        }
-
-        .space-3 {
-            width: var(--space-3);
-        }
-
-        .space-4 {
-            width: var(--space-4);
-        }
-
-        .space-5 {
-            width: var(--space-5);
-        }
-
-        /* ===== FOOTER ===== */
-
-        footer {
-            text-align: center;
-            padding: var(--space-4) 0;
-            color: var(--color-muted);
-            font-size: var(--fs-sm);
-        }
-
-        footer a {
-            color: var(--color-primary);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* ===== RESPONSIVE DESIGN ===== */
-
-        @media (max-width: 600px) {
-            body {
-                padding: var(--space-3);
-            }
-
-            h1 {
-                font-size: var(--fs-xl);
-            }
-
-            h2 {
-                font-size: var(--fs-md);
-            }
-
-            .card {
-                padding: var(--space-3);
-            }
-
-            .swatch {
-                flex: 1 1 90px;
-                min-width: 90px;
-            }
-
-            header {
-                align-items: flex-start;
-            }
-        }
-    </style>
+    .swatch {
+      width: 90px;
+      height: 60px;
+      border-radius: var(--radius);
+      display: grid;
+      place-items: end start;
+      padding: var(--space-1);
+      font-size: var(--fs-sm);
+      color: #fff;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="container">
+  <h1>Design Token Sheet</h1>
+  <button class="btn"
+    onclick="document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'dark' ? '' : 'dark'">Toggle
+    dark theme</button>
 
-        <!-- Header -->
-        <header>
-            <div>
-                <div class="brand">Assignment 24</div>
-                <h1>Design Token Sheet</h1>
-                <p class="subtitle">
-                    Created by Priyanshu Prajapati | BCA Artificial Intelligence
-                </p>
-            </div>
-
-            <button class="btn" id="themeToggle" type="button" aria-pressed="false">
-                Toggle Dark Theme
-            </button>
-        </header>
-
-        <!-- Color Tokens -->
-        <section class="card">
-            <h2>01. Color Tokens</h2>
-            <p class="card-description">
-                Colors are managed centrally using CSS custom properties.
-            </p>
-
-            <div class="swatches">
-                <div class="swatch" style="background: var(--color-primary)">
-                    Primary
-                </div>
-
-                <div class="swatch" style="background: var(--color-primary-dark)">
-                    Primary Dark
-                </div>
-
-                <div class="swatch" style="background: var(--color-accent)">
-                    Accent
-                </div>
-
-                <div class="swatch" style="background: var(--color-muted)">
-                    Muted
-                </div>
-            </div>
-        </section>
-
-        <!-- Typography Tokens -->
-        <section class="card">
-            <h2>02. Typography Scale</h2>
-            <p class="card-description">
-                A modular type scale keeps text sizes consistent throughout a page.
-            </p>
-
-            <div class="type-sample">
-                <span class="type-label">Extra Large — --fs-xl</span>
-                <div class="type-xl">Web Development</div>
-            </div>
-
-            <div class="type-sample">
-                <span class="type-label">Large — --fs-lg</span>
-                <div class="type-lg">BCA Artificial Intelligence</div>
-            </div>
-
-            <div class="type-sample">
-                <span class="type-label">Medium — --fs-md</span>
-                <div class="type-md">CSS Design Tokens</div>
-            </div>
-
-            <div class="type-sample">
-                <span class="type-label">Base — --fs-base</span>
-                <div class="type-base">Consistent styles make websites easier to maintain.</div>
-            </div>
-
-            <div class="type-sample">
-                <span class="type-label">Small — --fs-sm</span>
-                <div class="type-sm">Small supporting text and captions.</div>
-            </div>
-        </section>
-
-        <!-- Spacing Tokens -->
-        <section class="card">
-            <h2>03. Spacing Tokens</h2>
-            <p class="card-description">
-                Reusable spacing variables help maintain a consistent layout.
-            </p>
-
-            <div class="spacing-item">
-                <div class="spacing-box space-1"></div>
-                <span>--space-1: 0.25rem</span>
-            </div>
-
-            <div class="spacing-item">
-                <div class="spacing-box space-2"></div>
-                <span>--space-2: 0.5rem</span>
-            </div>
-
-            <div class="spacing-item">
-                <div class="spacing-box space-3"></div>
-                <span>--space-3: 1rem</span>
-            </div>
-
-            <div class="spacing-item">
-                <div class="spacing-box space-4"></div>
-                <span>--space-4: 1.5rem</span>
-            </div>
-
-            <div class="spacing-item">
-                <div class="spacing-box space-5"></div>
-                <span>--space-5: 2.5rem</span>
-            </div>
-        </section>
-
-        <!-- Button Components -->
-        <section class="card">
-            <h2>04. Button Components</h2>
-            <p class="card-description">
-                Components use shared tokens for colors, padding, and rounded corners.
-            </p>
-
-            <button class="btn" type="button">Primary Button</button>
-            <button class="btn btn--accent" type="button">Accent Button</button>
-        </section>
-
-        <!-- Student Details -->
-        <section class="card">
-            <h2>05. About the Developer</h2>
-
-            <p><strong>Name:</strong> Priyanshu Prajapati</p>
-            <p><strong>Course:</strong> BCA Artificial Intelligence</p>
-            <p><strong>University:</strong> Invertis University</p>
-
-            <p>
-                <strong>Project:</strong>
-                <a href="https://woodenkidsfurniture.in/" target="_blank" rel="noopener noreferrer">
-                    Wooden Kids Furniture
-                </a>
-            </p>
-
-            <p>
-                <strong>GitHub:</strong>
-                <a href="https://github.com/priyanshuprajapati07" target="_blank" rel="noopener noreferrer">
-                    View GitHub Profile
-                </a>
-            </p>
-
-            <p>
-                <strong>LinkedIn:</strong>
-                <a href="https://linkedin.com/in/priyanshu-prajapati-p77" target="_blank" rel="noopener noreferrer">
-                    View LinkedIn Profile
-                </a>
-            </p>
-        </section>
-
-        <!-- Footer -->
-        <footer>
-            <p>
-                Assignment 24 — Design Tokens with CSS Variables
-            </p>
-            <p>Created by Priyanshu Prajapati</p>
-        </footer>
-
+  <div class="card">
+    <h2>Colours</h2>
+    <div class="swatches">
+      <div class="swatch" style="background:var(--color-primary)">primary</div>
+      <div class="swatch" style="background:var(--color-primary-dark)">dark</div>
+      <div class="swatch" style="background:var(--color-accent)">accent</div>
+      <div class="swatch" style="background:var(--color-muted)">muted</div>
     </div>
+  </div>
 
-    <script>
-        // Dark theme toggle
-        const themeToggle = document.getElementById("themeToggle");
+  <div class="card">
+    <h2>Type scale</h2>
+    <p style="font-size:var(--fs-xl)">Extra large – --fs-xl</p>
+    <p style="font-size:var(--fs-lg)">Large – --fs-lg</p>
+    <p style="font-size:var(--fs-md)">Medium – --fs-md</p>
+    <p>Base – --fs-base</p>
+    <small>Small – --fs-sm</small>
+  </div>
 
-        themeToggle.addEventListener("click", function () {
-            const isDark =
-                document.documentElement.dataset.theme === "dark";
-
-            if (isDark) {
-                document.documentElement.dataset.theme = "";
-                themeToggle.textContent = "Toggle Dark Theme";
-                themeToggle.setAttribute("aria-pressed", "false");
-            } else {
-                document.documentElement.dataset.theme = "dark";
-                themeToggle.textContent = "Toggle Light Theme";
-                themeToggle.setAttribute("aria-pressed", "true");
-            }
-        });
-    </script>
+  <div class="card">
+    <h2>Buttons</h2>
+    <button class="btn">Primary</button> <button class="btn btn--accent">Accent</button>
+  </div>
 </body>
 
 </html>

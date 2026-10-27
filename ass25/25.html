@@ -2,495 +2,199 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Styled multi-page project with a design-choices note.">
+  <title>Styled Multi-Page Project</title>
+  <style>
+    :root {
+      --primary: #1f3a93;
+      --accent: #f4a261;
+      --bg: #f8f9fc;
+      --text: #222;
+      --radius: 8px;
+    }
 
-    <meta name="description"
-        content="Assignment 25 by Priyanshu Prajapati: a styled multi-page website using HTML and CSS.">
+    * {
+      box-sizing: border-box;
+    }
 
-    <meta name="author" content="Priyanshu Prajapati">
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-    <title>Assignment 25 | Priyanshu Prajapati</title>
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-    <style>
-        /* ===== DESIGN TOKENS ===== */
-        :root {
-            --primary: #1f3a93;
-            --primary-dark: #152967;
-            --accent: #f4a261;
-            --bg: #f5f7fc;
-            --surface: #ffffff;
-            --text: #222b3a;
-            --muted: #667085;
-            --border: #dfe4ee;
-            --radius: 10px;
-            --shadow: 0 4px 14px rgba(31, 58, 147, 0.08);
-        }
+    header h1 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
 
-        * {
-            box-sizing: border-box;
-        }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 1rem;
+      padding-bottom: 2px;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    nav a:hover {
+      border-bottom: 2px solid var(--accent);
+    }
 
-        body {
-            margin: 0;
-            font-family: "Segoe UI", system-ui, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
 
-        a {
-            color: var(--primary);
-        }
+    .page {
+      display: none;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+    }
 
-        /* ===== HEADER AND NAVIGATION ===== */
-        header {
-            background: var(--primary);
-            color: #fff;
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
+    .page:target,
+    body:not(:has(.page:target)) #home {
+      display: block;
+    }
 
-        header h1 {
-            margin: 0;
-            font-size: 1.4rem;
-        }
+    h2 {
+      color: var(--primary);
+      margin-top: 0;
+    }
 
-        .tagline {
-            margin: 0.2rem 0 0;
-            font-size: 0.85rem;
-            color: #e0e7ff;
-        }
+    label {
+      display: block;
+      margin-bottom: .75rem;
+      font-weight: 600;
+    }
 
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
+    input,
+    select,
+    textarea {
+      display: block;
+      width: 100%;
+      padding: .5rem;
+      margin-top: .25rem;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      font: inherit;
+    }
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 0.35rem 0.55rem;
-            border-radius: 5px;
-        }
+    button {
+      background: var(--accent);
+      border: 0;
+      padding: .6rem 1.4rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      cursor: pointer;
+    }
 
-        nav a:hover,
-        nav a:focus-visible {
-            background: var(--primary-dark);
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
-        }
+    button:hover {
+      filter: brightness(.92);
+    }
 
-        /* ===== MAIN CONTENT ===== */
-        main {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 1.5rem;
-            min-height: 65vh;
-        }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
 
-        .page {
-            display: none;
-            background: var(--surface);
-            padding: 1.75rem;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: .5rem;
+    }
 
-        .page:target,
-        body:not(:has(.page:target)) #home {
-            display: block;
-        }
+    th {
+      background: #eef1fb;
+      text-align: left;
+    }
 
-        h2 {
-            color: var(--primary);
-            margin-top: 0;
-        }
+    .note {
+      background: #fff8ec;
+      border-left: 5px solid var(--accent);
+      padding: 1rem;
+      margin-top: 1.5rem;
+      border-radius: 4px;
+    }
 
-        .eyebrow {
-            color: var(--muted);
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .highlight {
-            background: #fff8ec;
-            border-left: 4px solid var(--accent);
-            padding: 1rem;
-            border-radius: 5px;
-            margin-top: 1.25rem;
-        }
-
-        /* ===== TABLE ===== */
-        .table-wrapper {
-            overflow-x: auto;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th,
-        td {
-            border: 1px solid var(--border);
-            padding: 0.75rem;
-            text-align: left;
-        }
-
-        th {
-            background: #eef1fb;
-            color: var(--primary);
-        }
-
-        /* ===== FORMS ===== */
-        label {
-            display: block;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        input,
-        select,
-        textarea {
-            display: block;
-            width: 100%;
-            padding: 0.7rem;
-            margin-top: 0.35rem;
-            border: 1px solid #b8c1d1;
-            border-radius: 6px;
-            font: inherit;
-            background: #fff;
-            color: #222;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            outline: 2px solid var(--primary);
-            outline-offset: 1px;
-        }
-
-        button,
-        .button-link {
-            display: inline-block;
-            background: var(--accent);
-            color: #222;
-            border: 0;
-            padding: 0.7rem 1.3rem;
-            border-radius: var(--radius);
-            font: inherit;
-            font-weight: 700;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        button:hover,
-        .button-link:hover {
-            filter: brightness(0.94);
-        }
-
-        .project-link {
-            overflow-wrap: anywhere;
-        }
-
-        /* ===== DESIGN NOTE ===== */
-        .note {
-            background: #fff8ec;
-            border-left: 5px solid var(--accent);
-            padding: 1rem;
-            margin-top: 1.5rem;
-            border-radius: 4px;
-        }
-
-        .note p:first-child {
-            margin-top: 0;
-        }
-
-        .note p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            text-align: center;
-            padding: 1.25rem;
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        footer a {
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* ===== RESPONSIVE DESIGN ===== */
-        @media (max-width: 600px) {
-            header {
-                padding: 1rem;
-            }
-
-            header h1 {
-                font-size: 1.2rem;
-            }
-
-            nav {
-                gap: 0.3rem;
-            }
-
-            nav a {
-                font-size: 0.9rem;
-            }
-
-            main {
-                padding: 1rem;
-            }
-
-            .page {
-                padding: 1.1rem;
-            }
-        }
-    </style>
+    footer {
+      text-align: center;
+      padding: 1rem;
+      color: #666;
+    }
+  </style>
 </head>
 
 <body>
-
-    <!-- Header -->
-    <header>
-        <div>
-            <h1>Priyanshu's Site</h1>
-            <p class="tagline">BCA Artificial Intelligence | Web Development</p>
-        </div>
-
-        <!-- Navigation -->
-        <nav aria-label="Main navigation">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#register">Register</a>
-            <a href="#contact">Contact</a>
-            <a href="#design">Design Note</a>
-        </nav>
-    </header>
-
-    <main>
-
-        <!-- Home Page -->
-        <section id="home" class="page">
-            <p class="eyebrow">Assignment 25</p>
-            <h2>Welcome to My Website</h2>
-
-            <p>
-                Hello! I am Priyanshu Prajapati, a BCA Artificial Intelligence
-                student at Invertis University.
-            </p>
-
-            <p>
-                This styled multi-page project demonstrates HTML structure,
-                CSS styling, navigation, forms, tables, and design choices.
-                It is an improved version of my earlier multi-page HTML project.
-            </p>
-
-            <div class="highlight">
-                <strong>My Goal:</strong>
-                To improve my web development skills and build useful,
-                user-friendly websites.
-            </div>
-        </section>
-
-        <!-- About Page -->
-        <section id="about" class="page">
-            <h2>About Me</h2>
-
-            <p>
-                I am learning web development and programming while pursuing
-                my BCA in Artificial Intelligence.
-            </p>
-
-            <div class="table-wrapper">
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>Name</th>
-                            <td>Priyanshu Prajapati</td>
-                        </tr>
-                        <tr>
-                            <th>Course</th>
-                            <td>BCA Artificial Intelligence</td>
-                        </tr>
-                        <tr>
-                            <th>University</th>
-                            <td>Invertis University</td>
-                        </tr>
-                        <tr>
-                            <th>Interests</th>
-                            <td>Web Development, Programming, Artificial Intelligence</td>
-                        </tr>
-                        <tr>
-                            <th>Skills</th>
-                            <td>HTML, CSS, JavaScript, React Basics, Java, Python</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <p>
-                <strong>GitHub:</strong>
-                <a href="https://github.com/priyanshuprajapati07" target="_blank" rel="noopener noreferrer">
-                    View My GitHub
-                </a>
-            </p>
-
-            <p>
-                <strong>LinkedIn:</strong>
-                <a href="https://linkedin.com/in/priyanshu-prajapati-p77" target="_blank" rel="noopener noreferrer">
-                    View My LinkedIn
-                </a>
-            </p>
-        </section>
-
-        <!-- Registration Page -->
-        <section id="register" class="page">
-            <h2>Registration Form</h2>
-
-            <p>
-                This sample form demonstrates HTML input fields and validation.
-            </p>
-
-            <form action="#register" method="get">
-                <label for="student-name">
-                    Full Name
-                    <input type="text" id="student-name" name="name" placeholder="Enter your name" required>
-                </label>
-
-                <label for="student-email">
-                    Email Address
-                    <input type="email" id="student-email" name="email" placeholder="Enter your email" required>
-                </label>
-
-                <label for="course">
-                    Select Course
-                    <select id="course" name="course" required>
-                        <option value="">Choose a course</option>
-                        <option value="BCA AI">BCA Artificial Intelligence</option>
-                        <option value="BCA">BCA</option>
-                        <option value="BTech">B.Tech</option>
-                    </select>
-                </label>
-
-                <button type="submit">Register</button>
-            </form>
-
-            <p class="highlight">
-                Note: This is a demonstration form. It does not save registration
-                data to a database.
-            </p>
-        </section>
-
-        <!-- Contact Page -->
-        <section id="contact" class="page">
-            <h2>Contact Me</h2>
-
-            <p>
-                Use the sample form below to practice HTML form design.
-            </p>
-
-            <form action="#contact" method="get">
-                <label for="contact-name">
-                    Your Name
-                    <input type="text" id="contact-name" name="contactName" placeholder="Enter your name" required>
-                </label>
-
-                <label for="contact-email">
-                    Your Email
-                    <input type="email" id="contact-email" name="contactEmail" placeholder="Enter your email" required>
-                </label>
-
-                <label for="message">
-                    Your Message
-                    <textarea id="message" name="message" rows="4" placeholder="Write your message here"
-                        required></textarea>
-                </label>
-
-                <button type="submit">Send Message</button>
-            </form>
-
-            <p class="highlight">
-                Email: princek57350@gmail.com
-            </p>
-        </section>
-
-        <!-- Design Choices Page -->
-        <section id="design" class="page">
-            <h2>Design Choices</h2>
-
-            <div class="note">
-                <p>
-                    <strong>Colour:</strong>
-                    Deep blue represents trust and professionalism. Orange is used
-                    as an accent to make important buttons easy to notice.
-                </p>
-
-                <p>
-                    <strong>Typography:</strong>
-                    The system font stack loads quickly, while a line-height of 1.6
-                    helps keep paragraphs readable.
-                </p>
-
-                <p>
-                    <strong>Layout:</strong>
-                    The content has a maximum width of 900px to improve readability.
-                    White cards stand out against the light background.
-                </p>
-
-                <p>
-                    <strong>Maintainability:</strong>
-                    CSS custom properties store the main colors and border radius,
-                    making the design easier to update.
-                </p>
-
-                <p>
-                    <strong>Responsive Design:</strong>
-                    Media queries adjust spacing and navigation for smaller screens.
-                </p>
-
-                <p>
-                    <strong>Navigation:</strong>
-                    CSS :target displays the section selected from the navigation menu.
-                </p>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <p>
-            &copy; 2026 Priyanshu Prajapati |
-            Assignment 25
-        </p>
-
-        <p>
-            <a href="https://woodenkidsfurniture.in/" target="_blank" rel="noopener noreferrer">
-                Wooden Kids Furniture Project
-            </a>
-        </p>
-    </footer>
-
+  <header>
+    <h1>Priyanshu's Site</h1>
+    <nav><a href="#home">Home</a><a href="#about">About</a><a href="#register">Register</a><a
+        href="#contact">Contact</a><a href="#design">Design Note</a></nav>
+  </header>
+  <main>
+    <section id="home" class="page">
+      <h2>Home</h2>
+      <p>Welcome to my styled multi-page project, upgraded from the plain HTML version in Assignment 20.</p>
+    </section>
+    <section id="about" class="page">
+      <h2>About</h2>
+      <table>
+        <tr>
+          <th>City</th>
+          <td>Delhi</td>
+        </tr>
+        <tr>
+          <th>Course</th>
+          <td>BCA AI</td>
+        </tr>
+        <tr>
+          <th>Interests</th>
+          <td>Web, music, cricket</td>
+        </tr>
+      </table>
+    </section>
+    <section id="register" class="page">
+      <h2>Registration</h2>
+      <form action="#"><label>Name<input type="text" required></label><label>Email<input type="email" required></label>
+        <label>Course<select>
+            <option>B.Tech</option>
+            <option>BCA</option>
+          </select></label><button>Register</button>
+      </form>
+    </section>
+    <section id="contact" class="page">
+      <h2>Contact</h2>
+      <form action="#"><label>Name<input type="text"></label><label>Message<textarea
+            rows="4"></textarea></label><button>Send</button></form>
+    </section>
+    <section id="design" class="page">
+      <h2>Design Choices</h2>
+      <div class="note">
+        <p><strong>Colour:</strong> deep blue (trust, professionalism) with an orange accent only on actions so users
+          find buttons quickly.</p>
+        <p><strong>Typography:</strong> system font stack for fast loading; 1.6 line-height for readable paragraphs.</p>
+        <p><strong>Layout:</strong> content capped at 800px so lines stay comfortable to read; white cards on a
+          light-grey background create depth.</p>
+        <p><strong>Maintainability:</strong> colours live in CSS variables so the theme can change in one place.</p>
+      </div>
+    </section>
+  </main>
+  <footer><small>&copy; 2026 Priyanshu Prajapati</small></footer>
 </body>
 
 </html>
