@@ -2,212 +2,80 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Front-End Developer Internship Job Application Form">
-    <title>Front-End Developer Job Application</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Job application form using every HTML input type">
+  <title>Job Application</title>
 </head>
 
 <body>
+  <h1>Job Application – Front-End Developer</h1>
+  <form action="#" method="post" enctype="multipart/form-data">
 
-    <header>
-        <h1>Job Application – Front-End Developer</h1>
-        <p>Apply for a frontend development internship.</p>
-    </header>
+    <fieldset>
+      <legend>Personal details</legend>
+      <p><label for="fn">Full name <input type="text" id="fn" name="fullname" required></label></p>
+      <p><label for="em">Email <input type="email" id="em" name="email" required></label></p>
+      <p><label for="ph">Phone <input type="tel" id="ph" name="phone"></label></p>
+      <p><label for="dob">Date of birth <input type="date" id="dob" name="dob"></label></p>
+      <p><label for="web">Portfolio URL <input type="url" id="web" name="website" placeholder="https://"></label></p>
+      <p><label for="pw">Create password <input type="password" id="pw" name="password" minlength="8"></label></p>
+    </fieldset>
 
-    <main>
-        <form action="#" method="post" enctype="multipart/form-data">
+    <fieldset>
+      <legend>Job details</legend>
+      <p><label for="pos">Position
+          <select id="pos" name="position">
+            <option>Front-End Developer</option>
+            <option>UI Designer</option>
+            <option>QA Tester</option>
+          </select></label></p>
+      <p><label for="join">Earliest joining date <input type="date" id="join" name="join"></label></p>
+      <p><label for="slot">Interview slot <input type="datetime-local" id="slot" name="slot"></label></p>
+      <p><label for="mo">Preferred start month <input type="month" id="mo" name="month"></label></p>
+      <p><label for="wk">Preferred week <input type="week" id="wk" name="week"></label></p>
+      <p><label for="tm">Best call time <input type="time" id="tm" name="time"></label></p>
+      <p><label for="exp">Years of experience <input type="number" id="exp" name="exp" min="0" max="40"
+            value="0"></label></p>
+      <p><label for="sal">Expected salary (₹ LPA) <input type="range" id="sal" name="salary" min="2" max="30" value="6"
+            oninput="out.value=this.value"> <output id="out">6</output></label></p>
+      <p><label for="col">Favourite colour <input type="color" id="col" name="colour" value="#3366ff"></label></p>
+      <p><label for="sk">Skills (type or pick)
+          <input list="skills" id="sk" name="skill">
+          <datalist id="skills">
+            <option value="HTML"></option>
+            <option value="CSS"></option>
+            <option value="JavaScript"></option>
+            <option value="Git"></option>
+          </datalist></label></p>
+      <p><label for="s">Search company policy <input type="search" id="s" name="q"></label></p>
+    </fieldset>
 
-            <fieldset>
-                <legend>Personal Details</legend>
+    <fieldset>
+      <legend>Work mode</legend>
+      <label><input type="radio" name="mode" value="onsite" checked> On-site</label>
+      <label><input type="radio" name="mode" value="remote"> Remote</label>
+      <label><input type="radio" name="mode" value="hybrid"> Hybrid</label>
+    </fieldset>
 
-                <p>
-                    <label for="fullname">Full Name:</label>
-                    <input type="text" id="fullname" name="fullname" placeholder="Enter your full name"
-                        autocomplete="name" required>
-                </p>
+    <fieldset>
+      <legend>Technologies known</legend>
+      <label><input type="checkbox" name="tech" value="html"> HTML</label>
+      <label><input type="checkbox" name="tech" value="css"> CSS</label>
+      <label><input type="checkbox" name="tech" value="js"> JavaScript</label>
+    </fieldset>
 
-                <p>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email"
-                        required>
-                </p>
+    <p><label for="cv">Upload résumé (PDF) <input type="file" id="cv" name="resume" accept=".pdf"></label></p>
+    <p><label for="cover">Cover letter<br>
+        <textarea id="cover" name="cover" rows="5" cols="50" maxlength="500"></textarea></label></p>
 
-                <p>
-                    <label for="phone">Phone:</label>
-                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" maxlength="10"
-                        placeholder="10-digit phone number" title="Enter a 10-digit phone number">
-                </p>
+    <input type="hidden" name="source" value="careers-page">
+    <p><label><input type="checkbox" name="agree" required> I confirm that the information is correct</label></p>
 
-                <p>
-                    <label for="dob">Date of Birth:</label>
-                    <input type="date" id="dob" name="dob">
-                </p>
-
-                <p>
-                    <label for="portfolio">Portfolio URL:</label>
-                    <input type="url" id="portfolio" name="portfolio" placeholder="https://your-portfolio.com">
-                </p>
-
-                <p>
-                    <label for="password">Create Password:</label>
-                    <input type="password" id="password" name="password" minlength="8" autocomplete="new-password">
-                </p>
-            </fieldset>
-
-            <fieldset>
-                <legend>Job Details</legend>
-
-                <p>
-                    <label for="position">Position:</label>
-                    <select id="position" name="position" required>
-                        <option value="">-- Select Position --</option>
-                        <option value="frontend-intern">Front-End Developer Intern</option>
-                        <option value="web-developer">Web Developer Intern</option>
-                        <option value="ui-designer">UI Designer Intern</option>
-                        <option value="qa-tester">QA Tester Intern</option>
-                    </select>
-                </p>
-
-                <p>
-                    <label for="joining">Earliest Joining Date:</label>
-                    <input type="date" id="joining" name="joining">
-                </p>
-
-                <p>
-                    <label for="interview">Interview Slot:</label>
-                    <input type="datetime-local" id="interview" name="interview">
-                </p>
-
-                <p>
-                    <label for="month">Preferred Start Month:</label>
-                    <input type="month" id="month" name="month">
-                </p>
-
-                <p>
-                    <label for="week">Preferred Week:</label>
-                    <input type="week" id="week" name="week">
-                </p>
-
-                <p>
-                    <label for="calltime">Best Call Time:</label>
-                    <input type="time" id="calltime" name="calltime">
-                </p>
-
-                <p>
-                    <label for="experience">Years of Experience:</label>
-                    <input type="number" id="experience" name="experience" min="0" max="40" value="0">
-                </p>
-
-                <p>
-                    <label for="salary">Expected Salary (₹ LPA):</label>
-                    <input type="range" id="salary" name="salary" min="2" max="30" value="6"
-                        oninput="document.getElementById('salary-output').value = this.value">
-                    <output id="salary-output" for="salary">6</output> LPA
-                </p>
-
-                <p>
-                    <label for="color">Favourite Colour:</label>
-                    <input type="color" id="color" name="color" value="#3366ff">
-                </p>
-
-                <p>
-                    <label for="skills">Skills:</label>
-                    <input list="skill-options" id="skills" name="skills" placeholder="Type or choose a skill">
-                    <datalist id="skill-options">
-                        <option value="HTML">
-                        <option value="CSS">
-                        <option value="JavaScript">
-                        <option value="React">
-                        <option value="Git and GitHub">
-                    </datalist>
-                </p>
-
-                <p>
-                    <label for="search">Search Company Policy:</label>
-                    <input type="search" id="search" name="search">
-                </p>
-            </fieldset>
-
-            <fieldset>
-                <legend>Preferred Work Mode</legend>
-
-                <label>
-                    <input type="radio" name="workmode" value="remote" checked>
-                    Remote
-                </label>
-
-                <label>
-                    <input type="radio" name="workmode" value="hybrid">
-                    Hybrid
-                </label>
-
-                <label>
-                    <input type="radio" name="workmode" value="onsite">
-                    On-site
-                </label>
-            </fieldset>
-
-            <fieldset>
-                <legend>Technologies Known</legend>
-
-                <label>
-                    <input type="checkbox" name="technologies" value="html">
-                    HTML
-                </label>
-
-                <label>
-                    <input type="checkbox" name="technologies" value="css">
-                    CSS
-                </label>
-
-                <label>
-                    <input type="checkbox" name="technologies" value="javascript">
-                    JavaScript
-                </label>
-
-                <label>
-                    <input type="checkbox" name="technologies" value="react">
-                    React
-                </label>
-
-                <label>
-                    <input type="checkbox" name="technologies" value="git">
-                    Git and GitHub
-                </label>
-            </fieldset>
-
-            <p>
-                <label for="resume">Upload Résumé (PDF):</label>
-                <input type="file" id="resume" name="resume" accept=".pdf,application/pdf">
-            </p>
-
-            <p>
-                <label for="coverletter">Cover Letter:</label><br>
-                <textarea id="coverletter" name="coverletter" rows="5" cols="50" maxlength="500"
-                    placeholder="Write a short cover letter (maximum 500 characters)"></textarea>
-            </p>
-
-            <input type="hidden" name="source" value="careers-page">
-
-            <p>
-                <label>
-                    <input type="checkbox" name="agree" required>
-                    I confirm that the information provided is correct.
-                </label>
-            </p>
-
-            <button type="submit">Apply Now</button>
-            <button type="reset">Reset Form</button>
-            <button type="button" onclick="window.print()">Print Form</button>
-
-        </form>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Front-End Developer Careers</p>
-    </footer>
-
+    <input type="submit" value="Apply now">
+    <input type="reset" value="Reset">
+    <input type="button" value="Print" onclick="window.print()">
+  </form>
 </body>
 
 </html>

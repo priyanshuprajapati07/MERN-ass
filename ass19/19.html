@@ -2,249 +2,104 @@
 <html lang="en">
 
 <head>
-    <!-- Essential Meta Tags -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- ESSENTIAL META TAGS -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Meta Tag Audit – Template &amp; Report</title>
+  <meta name="description" content="Audit of all assignment HTML files with the meta tags they need.">
+  <meta name="author" content="Aarav Sharma">
+  <meta name="keywords" content="html, meta tags, seo, audit">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#1f3a93">
 
-    <title>Meta Tag Audit | Priyanshu Prajapati</title>
+  <!-- Open Graph (link previews) -->
+  <meta property="og:title" content="Meta Tag Audit">
+  <meta property="og:description" content="Which meta tags every page needs.">
+  <meta property="og:type" content="website">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='.9em' font-size='90'>🔍</text></svg>">
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
 
-    <meta name="description"
-        content="An HTML meta tag audit template explaining essential metadata, SEO, and Open Graph tags.">
-    <meta name="author" content="Priyanshu Prajapati">
-    <meta name="keywords" content="HTML, meta tags, SEO, web development, audit">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#1f3a93">
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Meta Tag Audit">
-    <meta property="og:description" content="Learn about essential HTML meta tags and how to audit web pages.">
-    <meta property="og:type" content="website">
+    th,
+    td {
+      border: 1px solid #aaa;
+      padding: .4rem .6rem;
+      text-align: left;
+    }
 
-    <!-- Favicon -->
-    <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='.9em' font-size='90'>🔍</text></svg>">
+    th {
+      background: #eee;
+    }
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+    .ok {
+      color: green;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: #f4f7fb;
-            color: #222;
-            line-height: 1.6;
-        }
-
-        header,
-        main,
-        footer {
-            background-color: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        h1,
-        h2 {
-            color: #1f3a93;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin: 20px 0;
-        }
-
-        th,
-        td {
-            border: 1px solid #ccc;
-            padding: 12px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #1f3a93;
-            color: white;
-        }
-
-        tbody tr:nth-child(even) {
-            background-color: #f0f3f8;
-        }
-
-        .ok {
-            color: #187a35;
-            font-weight: bold;
-        }
-
-        .pending {
-            color: #a15c00;
-            font-weight: bold;
-        }
-
-        code {
-            background-color: #eef1f7;
-            padding: 2px 5px;
-            border-radius: 4px;
-        }
-
-        footer {
-            text-align: center;
-            color: #555;
-        }
-
-        @media (max-width: 600px) {
-            body {
-                margin: 10px auto;
-                padding: 10px;
-            }
-
-            header,
-            main,
-            footer {
-                padding: 15px;
-            }
-
-            table {
-                font-size: 14px;
-            }
-
-            th,
-            td {
-                padding: 8px;
-            }
-        }
-    </style>
+    .fix {
+      color: crimson;
+    }
+  </style>
 </head>
 
 <body>
-
-    <header>
-        <h1>Meta Tag Audit of Assignments 6–18</h1>
-        <p>
-            This page explains the essential meta tags used in HTML documents
-            and provides a template for checking assignment files.
-        </p>
-        <p><strong>Created by:</strong> Priyanshu Prajapati</p>
-    </header>
-
-    <main>
-        <section>
-            <h2>Meta Tag Audit Report</h2>
-
-            <p>
-                Use this table to record the meta tags checked in each HTML file.
-                Update the status after verifying the actual files.
-            </p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>File</th>
-                        <th>Items to Check</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>06-basic-page.html</td>
-                        <td>Viewport, description, title</td>
-                        <td class="pending">To Verify</td>
-                    </tr>
-
-                    <tr>
-                        <td>07-resume-text-only.html</td>
-                        <td>Viewport, description, title</td>
-                        <td class="pending">To Verify</td>
-                    </tr>
-
-                    <tr>
-                        <td>08-resume-semantic.html</td>
-                        <td>Viewport, description, title</td>
-                        <td class="pending">To Verify</td>
-                    </tr>
-
-                    <tr>
-                        <td>09-debug-buggy-html.html</td>
-                        <td>Character encoding, title</td>
-                        <td class="pending">To Verify</td>
-                    </tr>
-
-                    <tr>
-                        <td>Assignments 10–18</td>
-                        <td>Viewport, description, title</td>
-                        <td class="pending">To Verify</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section>
-            <h2>Why Are Meta Tags Important?</h2>
-
-            <ul>
-                <li>
-                    <strong>Charset:</strong>
-                    Specifies character encoding so symbols and text display correctly.
-                </li>
-
-                <li>
-                    <strong>Viewport:</strong>
-                    Helps pages display correctly on mobile devices.
-                </li>
-
-                <li>
-                    <strong>Description:</strong>
-                    Provides a summary that search engines may use in search results.
-                </li>
-
-                <li>
-                    <strong>Author:</strong>
-                    Identifies the author of the page.
-                </li>
-
-                <li>
-                    <strong>Robots:</strong>
-                    Provides instructions to search engine crawlers.
-                </li>
-
-                <li>
-                    <strong>Open Graph:</strong>
-                    Provides information that social platforms can use when displaying shared links.
-                </li>
-
-                <li>
-                    <strong>Theme Color:</strong>
-                    Suggests a color for certain browser interface elements.
-                </li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Audit Checklist</h2>
-
-            <p>Before marking a file as fixed, check that it contains:</p>
-
-            <ol>
-                <li>A valid character encoding declaration.</li>
-                <li>A responsive viewport meta tag.</li>
-                <li>A meaningful page title.</li>
-                <li>A relevant meta description.</li>
-                <li>Correct author information, if required.</li>
-            </ol>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Priyanshu Prajapati | HTML Assignment 19</p>
-    </footer>
-
+  <h1>Meta-Tag Audit of Assignments 6 – 18</h1>
+  <p>Every HTML file was checked for <code>charset</code>, <code>viewport</code>, <code>description</code> and a
+    meaningful <code>&lt;title&gt;</code>.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>File</th>
+        <th>Missing before</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>06-basic-page.html</td>
+        <td>viewport, description</td>
+        <td class="ok">Fixed ✔</td>
+      </tr>
+      <tr>
+        <td>07-resume-text-only.html</td>
+        <td>viewport, description</td>
+        <td class="ok">Fixed ✔</td>
+      </tr>
+      <tr>
+        <td>08-resume-semantic.html</td>
+        <td>viewport, description</td>
+        <td class="ok">Fixed ✔</td>
+      </tr>
+      <tr>
+        <td>09-debug-buggy-html.html</td>
+        <td>charset (bug #2)</td>
+        <td class="ok">Fixed ✔</td>
+      </tr>
+      <tr>
+        <td>10 – 18</td>
+        <td>description on some pages</td>
+        <td class="ok">Fixed ✔</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>Why each tag matters</h2>
+  <ul>
+    <li><b>charset</b> – prevents garbled characters such as ₹ or é.</li>
+    <li><b>viewport</b> – makes pages usable on phones.</li>
+    <li><b>description</b> – the snippet shown in Google results.</li>
+    <li><b>Open Graph</b> – controls the preview when the link is shared.</li>
+  </ul>
 </body>
 
 </html>
